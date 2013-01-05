@@ -125,25 +125,46 @@
 
         private void GenerateTuples(params int[] nvalues)
         {
+            int k;
             string[] dimensions = new string[nvalues.Length];
 
-            for (var k = 0; k < nvalues.Length; k++)
+            for (k = 0; k < nvalues.Length; k++)
                 dimensions[k] = string.Format("Dimension{0}", k + 1);
 
             var dict = new Dictionary<string, object>();
 
-            for (var k = 0; k < nvalues.Length; k++)
-                for (var j = 0; j < nvalues[k]; j++)
+            IList<Tuple> tuples = new List<Tuple>();
+
+            k = 0;
+
+            for (var j = 0; j < nvalues[k]; j++)
+            {
+                var value = string.Format("Value {0}", j + 1);
+
+                Tuple tuple = new Tuple();
+                tuple.SetValue(this.engine, dimensions[k], value);
+                tuples.Add(tuple);
+            }
+
+            IList<Tuple> newtuples;
+
+            for (k = 1; k < nvalues.Length; k++, tuples = newtuples)
+            {
+                newtuples = new List<Tuple>();
+                foreach (var tuple in tuples)
                 {
-                    dict[dimensions[k]] = string.Format("Value {0}", j + 1);
-                    if (k == nvalues.Length - 1)
+                    for (var j = 0; j < nvalues[k]; j++)
                     {
-                        var newdict = new Dictionary<string, object>();
-                        foreach (var val in dict)
-                            newdict[val.Key] = val.Value;
-                        this.engine.AddTuple(newdict);
+                        var newtuple = new Tuple(tuple);
+                        var value = string.Format("Value {0}", j + 1);
+                        newtuple.SetValue(this.engine, dimensions[k], value);
+                        newtuples.Add(newtuple);
                     }
                 }
+            }
+
+            foreach (var t in tuples)
+                this.engine.AddTuple(t);
         }
     }
 }

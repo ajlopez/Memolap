@@ -33,10 +33,15 @@
             return this.dimensions.Values;
         }
 
+        public void AddTuple(Tuple tuple)
+        {
+            this.tuples.Add(tuple);
+        }
+
         public Tuple AddTuple(IDictionary<string, object> values)
         {
             var tuple = new Tuple(this, values);
-            this.tuples.Add(tuple);
+            this.AddTuple(tuple);
 
             return tuple;
         }

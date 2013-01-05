@@ -5,6 +5,7 @@ obj
 *.pidb
 *.userprefs
 packages/*
+packages
 *.nupkg
 output/*
 TestResults

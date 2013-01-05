@@ -32,5 +32,43 @@
 
             Assert.IsFalse(tuple.HasValue("Province", "Buenos Aires"));
         }
+
+        [TestMethod]
+        public void Match()
+        {
+            var tuple = new Tuple(this.engine, new Dictionary<string, object>() {
+                { "Country", "Argentina" },
+                { "Category", "Beverages" },
+                { "Product", "Beer" }
+            });
+
+            Assert.IsTrue(tuple.Match(new Dictionary<string, object>() { 
+                { "Country", "Argentina" }
+            }));
+
+            Assert.IsTrue(tuple.Match(new Dictionary<string, object>() { 
+                { "Country", "Argentina" },
+                { "Category", "Beverages" }
+            }));
+
+            Assert.IsTrue(tuple.Match(new Dictionary<string, object>() { 
+                { "Product", "Beer" },
+                { "Category", "Beverages" }
+            }));
+
+            Assert.IsFalse(tuple.Match(new Dictionary<string, object>() { 
+                { "Country", "Chile" }
+            }));
+
+            Assert.IsFalse(tuple.Match(new Dictionary<string, object>() { 
+                { "Country", "Chile" },
+                { "Category", "Beverages" }
+            }));
+
+            Assert.IsFalse(tuple.Match(new Dictionary<string, object>() { 
+                { "Product", "Coffee" },
+                { "Category", "Beverages" }
+            }));
+        }
     }
 }

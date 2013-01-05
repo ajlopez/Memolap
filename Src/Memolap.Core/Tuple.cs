@@ -28,5 +28,14 @@
         {
             return this.values.Any(v => v.Dimension.Name.Equals(dimension) && v.Object.Equals(value));
         }
+
+        public bool Match(IDictionary<string, object> values)
+        {
+            foreach (var val in values)
+                if (!this.HasValue(val.Key, val.Value))
+                    return false;
+
+            return true;
+        }
     }
 }

@@ -1,0 +1,53 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name="Dimension.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:31:51</timestamp>
+      <milliseconds>526</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 15:06:41</timestamp>
+    <milliseconds>380</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:31:51</timestamp>
+      <milliseconds>526</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 13:35:15</timestamp>
+    <milliseconds>99</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Value.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:31:51</timestamp>
+      <milliseconds>526</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 15:02:55</timestamp>
+    <milliseconds>174</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.LayoutRules" rule="ElementMustNotBeOnSingleLine" ruleCheckId="SA1502">
+        <context>The property must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.LayoutRules" rule="ElementMustNotBeOnSingleLine" ruleCheckId="SA1502">
+        <context>The property must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
+        <line>21</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <project key="-1615803179">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="Engine.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:31:51</timestamp>
+      <milliseconds>526</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 15:32:35</timestamp>
+    <milliseconds>576</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

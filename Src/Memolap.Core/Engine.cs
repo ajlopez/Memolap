@@ -7,30 +7,30 @@
 
     public class Engine
     {
-        private IDictionary<String, Dimension> dimensions = new Dictionary<String, Dimension>();
+        private IDictionary<string, Dimension> dimensions = new Dictionary<string, Dimension>();
         private IList<IList<Value>> tuples = new List<IList<Value>>();
 
         public Dimension CreateDimension(string name)
         {
-            if (dimensions.ContainsKey(name))
+            if (this.dimensions.ContainsKey(name))
                 throw new InvalidOperationException("Dimension already exists");
 
             Dimension dimension = new Dimension(name);
-            dimensions[name] = dimension;
+            this.dimensions[name] = dimension;
             return dimension;
         }
 
         public Dimension GetDimension(string name)
         {
-            if (dimensions.ContainsKey(name))
-                return dimensions[name];
+            if (this.dimensions.ContainsKey(name))
+                return this.dimensions[name];
 
             return null;
         }
 
         public ICollection<Dimension> GetDimensions()
         {
-            return dimensions.Values;
+            return this.dimensions.Values;
         }
 
         public IList<Value> AddTuple(IDictionary<string, object> values)
@@ -45,7 +45,7 @@
                 tuple.Add(dimension.GetValue(val.Value));
             }
 
-            tuples.Add(tuple);
+            this.tuples.Add(tuple);
 
             return tuple;
         }

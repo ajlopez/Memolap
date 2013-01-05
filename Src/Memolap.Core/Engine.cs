@@ -8,6 +8,7 @@
     public class Engine
     {
         private IDictionary<String, Dimension> dimensions = new Dictionary<String, Dimension>();
+        private IList<IList<Value>> tuples = new List<IList<Value>>();
 
         public Dimension CreateDimension(string name)
         {
@@ -44,7 +45,14 @@
                 tuple.Add(dimension.GetValue(val.Value));
             }
 
+            tuples.Add(tuple);
+
             return tuple;
+        }
+
+        public int GetTupleCount()
+        {
+            return this.tuples.Count;
         }
     }
 }

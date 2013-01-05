@@ -95,5 +95,27 @@
             Assert.IsTrue(result.Any(v => v.Dimension.Name == "Category" && v.Object.Equals("Beverages")));
             Assert.IsTrue(result.Any(v => v.Dimension.Name == "Product" && v.Object.Equals("Beer")));
         }
+
+        [TestMethod]
+        public void GetTupleCount()
+        {
+            Engine engine = new Engine();
+
+            engine.AddTuple(new Dictionary<string, object>()
+            {
+                { "Country", "Argentina" },
+                { "Category", "Beverages" },
+                { "Product", "Beer" }
+            });
+
+            engine.AddTuple(new Dictionary<string, object>()
+            {
+                { "Country", "Argentina" },
+                { "Category", "Beverages" },
+                { "Product", "Coke" }
+            });
+
+            Assert.AreEqual(2, engine.GetTupleCount());
+        }
     }
 }

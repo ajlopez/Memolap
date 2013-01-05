@@ -144,6 +144,7 @@
         {
             GenerateTuples(30, 40, 50, 10);
             Assert.AreEqual(600000, this.engine.GetTupleCount());
+            Assert.AreEqual(20000, this.engine.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
         }
 
         private void GenerateTuples(params int[] nvalues)

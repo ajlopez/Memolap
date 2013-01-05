@@ -17,7 +17,7 @@
         public void GetIndex()
         {
             Domain domain = new Domain();
-            domain.InitializeFromFolder("WebSampleTestFikes");
+            domain.InitializeFromFolder("WebSampleTestFiles");
 
             HomeController controller = new HomeController();
 

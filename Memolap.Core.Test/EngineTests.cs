@@ -123,6 +123,29 @@
             Assert.AreEqual(6, this.engine.GetTupleCount());
         }
 
+        [TestMethod]
+        public void GetDimensionOneTuples()
+        {
+            GenerateTuples(3, 4, 5);
+            Assert.AreEqual(60, this.engine.GetTupleCount());
+            Assert.AreEqual(20, this.engine.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
+        }
+
+        [TestMethod]
+        public void GetDimensionOneManyTuples()
+        {
+            GenerateTuples(3, 40, 50);
+            Assert.AreEqual(6000, this.engine.GetTupleCount());
+            Assert.AreEqual(2000, this.engine.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
+        }
+
+        [TestMethod]
+        public void GetHalfMillionCount()
+        {
+            GenerateTuples(30, 40, 50, 10);
+            Assert.AreEqual(600000, this.engine.GetTupleCount());
+        }
+
         private void GenerateTuples(params int[] nvalues)
         {
             int k;

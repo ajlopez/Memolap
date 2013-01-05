@@ -119,14 +119,14 @@
         [TestMethod]
         public void GenerateTuplesAndGetCount()
         {
-            GenerateTuples(3, 2);
+            this.GenerateTuples(3, 2);
             Assert.AreEqual(6, this.engine.GetTupleCount());
         }
 
         [TestMethod]
         public void GetDimensionOneTuples()
         {
-            GenerateTuples(3, 4, 5);
+            this.GenerateTuples(3, 4, 5);
             Assert.AreEqual(60, this.engine.GetTupleCount());
             Assert.AreEqual(20, this.engine.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
         }
@@ -134,7 +134,7 @@
         [TestMethod]
         public void GetDimensionOneManyTuples()
         {
-            GenerateTuples(3, 40, 50);
+            this.GenerateTuples(3, 40, 50);
             Assert.AreEqual(6000, this.engine.GetTupleCount());
             Assert.AreEqual(2000, this.engine.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
         }
@@ -142,7 +142,7 @@
         [TestMethod]
         public void GetHalfMillionCount()
         {
-            GenerateTuples(30, 40, 50, 10);
+            this.GenerateTuples(30, 40, 50, 10);
             Assert.AreEqual(600000, this.engine.GetTupleCount());
             Assert.AreEqual(20000, this.engine.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
 
@@ -154,7 +154,7 @@
         [TestMethod]
         public void GetTuplesDimensions()
         {
-            GenerateTuples(3, 4, 5, 2);
+            this.GenerateTuples(3, 4, 5, 2);
 
             var dimensions = this.engine.GetTuplesDimensions(new Dictionary<string, object>() { { "Dimension1", "Value 1" } });
             Assert.IsNotNull(dimensions);
@@ -167,7 +167,7 @@
         [TestMethod]
         public void GetTuplesDimensionsGivenTwoValues()
         {
-            GenerateTuples(3, 4, 5, 2);
+            this.GenerateTuples(3, 4, 5, 2);
 
             var dimensions = this.engine.GetTuplesDimensions(new Dictionary<string, object>() { { "Dimension1", "Value 1" }, { "Dimension2", "Value 2" } });
             Assert.IsNotNull(dimensions);
@@ -179,7 +179,7 @@
         [TestMethod]
         public void GetTuplesValues()
         {
-            GenerateTuples(3, 4, 5, 2);
+            this.GenerateTuples(3, 4, 5, 2);
 
             var values = this.engine.GetTuplesValues(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }, "Dimension2");
             Assert.IsNotNull(values);
@@ -188,6 +188,18 @@
             Assert.IsTrue(values.Any(val => val.Object.Equals("Value 2")));
             Assert.IsTrue(values.Any(val => val.Object.Equals("Value 3")));
             Assert.IsTrue(values.Any(val => val.Object.Equals("Value 4")));
+        }
+
+        [TestMethod]
+        public void MapReduceTuplesValues()
+        {
+            this.GenerateTuples(3, 4, 5, 2);
+
+            var result = this.engine.MapReduceTuplesValues(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }, "Dimension2", tuple => new Counter(), (tuple, obj) => { ((Counter)obj).Count++; });
+            Assert.IsNotNull(result);
+            Assert.AreEqual(4, result.Count);
+            Assert.IsTrue(result.Any(v => v.Value is Counter));
+            Assert.IsTrue(result.Any(v => ((Counter)v.Value).Count == 10));
         }
 
         private void GenerateTuples(params int[] nvalues)
@@ -209,6 +221,7 @@
                 var value = string.Format("Value {0}", j + 1);
 
                 Tuple tuple = new Tuple();
+                tuple.Data = j + 1;
                 tuple.SetValue(this.engine, dimensions[k], value);
                 tuples.Add(tuple);
             }
@@ -223,6 +236,7 @@
                     for (var j = 0; j < nvalues[k]; j++)
                     {
                         var newtuple = new Tuple(tuple);
+                        newtuple.Data = (int)tuple.Data + j + 1;
                         var value = string.Format("Value {0}", j + 1);
                         newtuple.SetValue(this.engine, dimensions[k], value);
                         newtuples.Add(newtuple);
@@ -232,6 +246,11 @@
 
             foreach (var t in tuples)
                 this.engine.AddTuple(t);
+        }
+
+        private class Counter
+        {
+            public int Count { get; set; }
         }
     }
 }

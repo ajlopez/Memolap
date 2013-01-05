@@ -92,6 +92,36 @@
             return vals;
         }
 
+        public IDictionary<Value, object> MapReduceTuplesValues(IDictionary<string, object> values, string dimension, Func<Tuple, object> newobj, Action<Tuple, object> process)
+        {
+            IList<Value> vals = new List<Value>();
+            IList<object> objects = new List<object>();
+
+            foreach (var tuple in this.GetTuples(values))
+            {
+                Value value = tuple.GetValue(dimension);
+                if (value == null)
+                    continue;
+                int index = vals.IndexOf(value);
+                if (index >= 0)
+                    process(tuple, objects[index]);
+                else
+                {
+                    object obj = newobj(tuple);
+                    vals.Add(value);
+                    objects.Add(obj);
+                    process(tuple, obj);
+                }
+            }
+
+            IDictionary<Value, object> result = new Dictionary<Value, object>();
+
+            for (var k = 0; k < vals.Count; k++)
+                result[vals[k]] = objects[k];
+
+            return result;
+        }
+
         public int GetTupleCount()
         {
             return this.tuples.Count;

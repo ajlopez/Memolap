@@ -26,8 +26,14 @@
       <timestamp>01/05/2013 15:37:51</timestamp>
       <milliseconds>896</milliseconds>
     </settings>
-    <timestamp>01/05/2013 16:03:44</timestamp>
-    <milliseconds>371</milliseconds>
-    <violations />
+    <timestamp>01/05/2013 17:40:26</timestamp>
+    <milliseconds>870</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to GenerateTuples must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>182</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
 </stylecopresultscache>

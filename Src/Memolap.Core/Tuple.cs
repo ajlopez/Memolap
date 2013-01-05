@@ -14,6 +14,8 @@
             this.values = new List<Value>();
         }
 
+        public object Data { get; set; }
+
         public Tuple(Engine engine, IDictionary<string, object> values)
         {
             this.values = new List<Value>();

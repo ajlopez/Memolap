@@ -1,9 +1,9 @@
 ﻿namespace Memolap.Core.Test
 {
     using System;
-    using System.Text;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -90,10 +90,10 @@
             });
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(3, result.Count);
-            Assert.IsTrue(result.Any(v => v.Dimension.Name == "Country" && v.Object.Equals("Argentina")));
-            Assert.IsTrue(result.Any(v => v.Dimension.Name == "Category" && v.Object.Equals("Beverages")));
-            Assert.IsTrue(result.Any(v => v.Dimension.Name == "Product" && v.Object.Equals("Beer")));
+            Assert.AreEqual(3, result.Size);
+            Assert.IsTrue(result.HasValue("Country", "Argentina"));
+            Assert.IsTrue(result.HasValue("Category", "Beverages"));
+            Assert.IsTrue(result.HasValue("Product", "Beer"));
         }
 
         [TestMethod]

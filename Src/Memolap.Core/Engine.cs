@@ -8,7 +8,7 @@
     public class Engine
     {
         private IDictionary<string, Dimension> dimensions = new Dictionary<string, Dimension>();
-        private IList<IList<Value>> tuples = new List<IList<Value>>();
+        private IList<Tuple> tuples = new List<Tuple>();
 
         public Dimension CreateDimension(string name)
         {
@@ -33,18 +33,9 @@
             return this.dimensions.Values;
         }
 
-        public IList<Value> AddTuple(IDictionary<string, object> values)
+        public Tuple AddTuple(IDictionary<string, object> values)
         {
-            IList<Value> tuple = new List<Value>();
-
-            foreach (var val in values)
-            {
-                Dimension dimension = this.GetDimension(val.Key);
-                if (dimension == null)
-                    dimension = this.CreateDimension(val.Key);
-                tuple.Add(dimension.GetValue(val.Value));
-            }
-
+            var tuple = new Tuple(this, values);
             this.tuples.Add(tuple);
 
             return tuple;

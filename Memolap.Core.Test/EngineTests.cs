@@ -145,6 +145,35 @@
             GenerateTuples(30, 40, 50, 10);
             Assert.AreEqual(600000, this.engine.GetTupleCount());
             Assert.AreEqual(20000, this.engine.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
+
+            var dimensions = this.engine.GetTuplesDimensions(new Dictionary<string, object>() { { "Dimension1", "Value 1" } });
+            Assert.IsNotNull(dimensions);
+            Assert.AreEqual(3, dimensions.Count);
+        }
+
+        [TestMethod]
+        public void GetTuplesDimensions()
+        {
+            GenerateTuples(3, 4, 5, 2);
+
+            var dimensions = this.engine.GetTuplesDimensions(new Dictionary<string, object>() { { "Dimension1", "Value 1" } });
+            Assert.IsNotNull(dimensions);
+            Assert.AreEqual(3, dimensions.Count);
+            Assert.IsTrue(dimensions.Any(dim => dim.Name == "Dimension2"));
+            Assert.IsTrue(dimensions.Any(dim => dim.Name == "Dimension3"));
+            Assert.IsTrue(dimensions.Any(dim => dim.Name == "Dimension4"));
+        }
+
+        [TestMethod]
+        public void GetTuplesDimensionsGivenTwoValues()
+        {
+            GenerateTuples(3, 4, 5, 2);
+
+            var dimensions = this.engine.GetTuplesDimensions(new Dictionary<string, object>() { { "Dimension1", "Value 1" }, { "Dimension2", "Value 2" } });
+            Assert.IsNotNull(dimensions);
+            Assert.AreEqual(2, dimensions.Count);
+            Assert.IsTrue(dimensions.Any(dim => dim.Name == "Dimension3"));
+            Assert.IsTrue(dimensions.Any(dim => dim.Name == "Dimension4"));
         }
 
         private void GenerateTuples(params int[] nvalues)

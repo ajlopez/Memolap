@@ -50,6 +50,11 @@
             this.values.Add(new Value(dim, value));
         }
 
+        public ICollection<Value> GetValues()
+        {
+            return this.values;
+        }
+
         public bool Match(IDictionary<string, object> values)
         {
             foreach (var val in values)

@@ -98,15 +98,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeControllerTests.cs" />
+    <Compile Include="DomainTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="WebSampleTestFiles\Categories.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebSampleTestFiles\Countries.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Memolap.Core\Memolap.Core.csproj">
+      <Project>{4E4E0FBE-61AB-4832-A439-6CADAEAD6F9F}</Project>
+      <Name>Memolap.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebSample\WebSample.csproj">
       <Project>{B87588DD-554F-4D61-AABC-EB1F14127DC4}</Project>
       <Name>WebSample</Name>

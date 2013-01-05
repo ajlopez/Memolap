@@ -34,5 +34,10 @@
             this.values.Add(newvalue);
             return newvalue;
         }
+
+        public ICollection<Value> GetValues()
+        {
+            return this.values;
+        }
     }
 }

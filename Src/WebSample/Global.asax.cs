@@ -18,6 +18,8 @@
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Domain.Current.InitializeFromFolder("App_Data");
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System.Web;
-using System.Web.Mvc;
-
-namespace WebSample
+﻿namespace WebSample
 {
+    using System.Diagnostics.CodeAnalysis;
+    using System.Web;
+    using System.Web.Mvc;
+
+    [ExcludeFromCodeCoverage]
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)

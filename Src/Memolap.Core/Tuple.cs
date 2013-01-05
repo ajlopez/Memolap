@@ -50,6 +50,11 @@
             this.values.Add(new Value(dim, value));
         }
 
+        public Value GetValue(string dimension)
+        {
+            return this.values.FirstOrDefault(v => v.Dimension.Name.Equals(dimension));
+        }
+
         public ICollection<Value> GetValues()
         {
             return this.values;

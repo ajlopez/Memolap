@@ -76,6 +76,20 @@
             return dimensions;
         }
 
+        public ICollection<Value> GetTuplesValues(IDictionary<string, object> values, string dimension)
+        {
+            IList<Value> vals = new List<Value>();
+
+            foreach (var tuple in this.GetTuples(values))
+            {
+                Value value = tuple.GetValue(dimension);
+                if (value != null && !vals.Contains(value))
+                    vals.Add(value);
+            }
+
+            return vals;
+        }
+
         public int GetTupleCount()
         {
             return this.tuples.Count;

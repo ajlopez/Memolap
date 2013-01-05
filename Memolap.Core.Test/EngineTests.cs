@@ -176,6 +176,20 @@
             Assert.IsTrue(dimensions.Any(dim => dim.Name == "Dimension4"));
         }
 
+        [TestMethod]
+        public void GetTuplesValues()
+        {
+            GenerateTuples(3, 4, 5, 2);
+
+            var values = this.engine.GetTuplesValues(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }, "Dimension2");
+            Assert.IsNotNull(values);
+            Assert.AreEqual(4, values.Count);
+            Assert.IsTrue(values.Any(val => val.Object.Equals("Value 1")));
+            Assert.IsTrue(values.Any(val => val.Object.Equals("Value 2")));
+            Assert.IsTrue(values.Any(val => val.Object.Equals("Value 3")));
+            Assert.IsTrue(values.Any(val => val.Object.Equals("Value 4")));
+        }
+
         private void GenerateTuples(params int[] nvalues)
         {
             int k;

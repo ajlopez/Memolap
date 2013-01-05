@@ -1,0 +1,60 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name="FilterConfig.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 18:40:43</timestamp>
+      <milliseconds>392</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 18:27:41</timestamp>
+    <milliseconds>358</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HomeController.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 18:40:43</timestamp>
+      <milliseconds>392</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 18:12:01</timestamp>
+    <milliseconds>436</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Domain.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 18:40:43</timestamp>
+      <milliseconds>392</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 18:40:46</timestamp>
+    <milliseconds>788</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Global.asax.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 18:40:43</timestamp>
+      <milliseconds>392</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 18:23:32</timestamp>
+    <milliseconds>121</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 18:40:43</timestamp>
+      <milliseconds>392</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 18:04:17</timestamp>
+    <milliseconds>637</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RouteConfig.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 18:40:43</timestamp>
+      <milliseconds>392</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 18:41:29</timestamp>
+    <milliseconds>728</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="1006545895">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+</stylecopresultscache>

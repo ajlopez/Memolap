@@ -51,6 +51,13 @@
         }
 
         [TestMethod]
+        public void GetUnknownDimension()
+        {
+            Engine engine = new Engine();
+            Assert.IsNull(engine.GetDimension("Foo"));
+        }
+
+        [TestMethod]
         public void GetDimensions()
         {
             Engine engine = new Engine();

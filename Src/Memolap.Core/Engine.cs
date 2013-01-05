@@ -31,5 +31,20 @@
         {
             return dimensions.Values;
         }
+
+        public IList<Value> AddTuple(IDictionary<string, object> values)
+        {
+            IList<Value> tuple = new List<Value>();
+
+            foreach (var val in values)
+            {
+                Dimension dimension = this.GetDimension(val.Key);
+                if (dimension == null)
+                    dimension = this.CreateDimension(val.Key);
+                tuple.Add(dimension.GetValue(val.Value));
+            }
+
+            return tuple;
+        }
     }
 }

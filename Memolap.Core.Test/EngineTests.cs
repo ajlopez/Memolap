@@ -76,5 +76,24 @@
             Assert.IsTrue(result.Any(c => c.Name == "Category"));
             Assert.IsTrue(result.Any(c => c.SetName == "Categories"));
         }
+
+        [TestMethod]
+        public void AddTuple()
+        {
+            Engine engine = new Engine();
+
+            var result = engine.AddTuple(new Dictionary<string, object>()
+            {
+                { "Country", "Argentina" },
+                { "Category", "Beverages" },
+                { "Product", "Beer" }
+            });
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count);
+            Assert.IsTrue(result.Any(v => v.Dimension.Name == "Country" && v.Object.Equals("Argentina")));
+            Assert.IsTrue(result.Any(v => v.Dimension.Name == "Category" && v.Object.Equals("Beverages")));
+            Assert.IsTrue(result.Any(v => v.Dimension.Name == "Product" && v.Object.Equals("Beer")));
+        }
     }
 }

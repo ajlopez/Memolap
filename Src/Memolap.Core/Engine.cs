@@ -57,7 +57,8 @@
         {
             IList<Dimension> given = new List<Dimension>();
 
-            foreach (var val in values) {
+            foreach (var val in values) 
+            {
                 Dimension dimension = this.GetDimension(val.Key);
                 if (dimension != null && !given.Contains(dimension))
                     given.Add(dimension);
@@ -67,7 +68,8 @@
 
             foreach (var tuple in this.GetTuples(values))
                 foreach (var value in tuple.GetValues())
-                    if (!given.Contains(value.Dimension) && !dimensions.Contains(value.Dimension)) {
+                    if (!given.Contains(value.Dimension) && !dimensions.Contains(value.Dimension)) 
+                    {
                         dimensions.Add(value.Dimension);
                         if (dimensions.Count >= this.dimensions.Count)
                             break;

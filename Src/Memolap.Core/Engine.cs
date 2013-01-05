@@ -26,5 +26,10 @@
 
             return null;
         }
+
+        public ICollection<Dimension> GetDimensions()
+        {
+            return dimensions.Values;
+        }
     }
 }

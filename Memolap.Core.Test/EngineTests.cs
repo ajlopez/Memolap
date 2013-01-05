@@ -49,5 +49,25 @@
             engine.CreateDimension("Country");
             engine.CreateDimension("Country");
         }
+
+        [TestMethod]
+        public void GetDimensions()
+        {
+            Engine engine = new Engine();
+            engine.CreateDimension("Country");
+            engine.CreateDimension("Product");
+            engine.CreateDimension("Category");
+
+            var result = engine.GetDimensions();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count);
+            Assert.IsTrue(result.Any(c => c.Name == "Country"));
+            Assert.IsTrue(result.Any(c => c.SetName == "Countries"));
+            Assert.IsTrue(result.Any(c => c.Name == "Product"));
+            Assert.IsTrue(result.Any(c => c.SetName == "Products"));
+            Assert.IsTrue(result.Any(c => c.Name == "Category"));
+            Assert.IsTrue(result.Any(c => c.SetName == "Categories"));
+        }
     }
 }

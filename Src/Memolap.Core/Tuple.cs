@@ -9,6 +9,11 @@
     {
         private IList<Value> values;
 
+        public Tuple()
+        {
+            this.values = new List<Value>();
+        }
+
         public Tuple(Engine engine, IDictionary<string, object> values)
         {
             this.values = new List<Value>();
@@ -22,11 +27,27 @@
             }
         }
 
+        public Tuple(Tuple tuple)
+        {
+            this.values = new List<Value>(tuple.values);
+        }
+
         public int Size { get { return this.values.Count; } }
 
         public bool HasValue(string dimension, object value)
         {
-            return this.values.Any(v => v.Dimension.Name.Equals(dimension) && v.Object.Equals(value));
+            return this.values.Any(v => v.Dimension.Name.Equals(dimension) && (value == null || v.Object.Equals(value)));
+        }
+
+        public void SetValue(Engine engine, string dimension, object value)
+        {
+            Dimension dim = engine.GetDimension(dimension);
+            if (dim == null)
+                dim = engine.CreateDimension(dimension);
+            var val = this.values.FirstOrDefault(v => v.Dimension.Name.Equals(dimension));
+            if (val != null)
+                this.values.Remove(val);
+            this.values.Add(new Value(dim, value));
         }
 
         public bool Match(IDictionary<string, object> values)

@@ -41,6 +41,13 @@
             return tuple;
         }
 
+        public IEnumerable<Tuple> GetTuples(IDictionary<string, object> values)
+        {
+            foreach (var tuple in this.tuples)
+                if (tuple.Match(values))
+                    yield return tuple;
+        }
+
         public int GetTupleCount()
         {
             return this.tuples.Count;

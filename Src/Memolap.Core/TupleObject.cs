@@ -5,18 +5,18 @@
     using System.Linq;
     using System.Text;
 
-    public class Tuple
+    public class TupleObject
     {
         private IList<Value> values;
 
-        public Tuple()
+        public TupleObject()
         {
             this.values = new List<Value>();
         }
 
         public object Data { get; set; }
 
-        public Tuple(Engine engine, IDictionary<string, object> values)
+        public TupleObject(Engine engine, IDictionary<string, object> values)
         {
             this.values = new List<Value>();
 
@@ -29,7 +29,7 @@
             }
         }
 
-        public Tuple(Tuple tuple)
+        public TupleObject(TupleObject tuple)
         {
             this.values = new List<Value>(tuple.values);
         }

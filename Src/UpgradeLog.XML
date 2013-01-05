@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Memolap">
+</Property><Property Name="Solution File" Value="C:\Git\Memolap\Src\Memolap.sln">
+</Property><Property Name="Date" Value="Saturday, January 05, 2013">
+</Property><Property Name="Time" Value="18:00 PM">
+</Property></Properties><Event ErrorLevel="0" Project="Memolap.Core" Source="Memolap.Core\Memolap.Core.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Memolap.Core" Source="Memolap.Core\Memolap.Core.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Memolap.Core.Test" Source="..\Memolap.Core.Test\Memolap.Core.Test.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Memolap.Core.Test" Source="..\Memolap.Core.Test\Memolap.Core.Test.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Memolap.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Memolap.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Memolap.Core" Source="Memolap.Core\Memolap.Core.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="3" Project="" Source="LocalTestRun.testrunconfig" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="LocalTestRun.testrunconfig" Description="The file was converted to the current format.">
+</Event><Event ErrorLevel="3" Project="" Source="Memolap.vsmdi" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Memolap.vsmdi" Description="The file was converted to the current format.">
+</Event><Event ErrorLevel="0" Project="Memolap.Core.Test" Source="..\Memolap.Core.Test\Memolap.Core.Test.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

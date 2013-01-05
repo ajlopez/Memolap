@@ -1,0 +1,39 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:37:51</timestamp>
+      <milliseconds>896</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 13:36:23</timestamp>
+    <milliseconds>659</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DimensionTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:37:51</timestamp>
+      <milliseconds>896</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 15:38:05</timestamp>
+    <milliseconds>292</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="-2116912974">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="EngineTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:37:51</timestamp>
+      <milliseconds>896</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 17:40:26</timestamp>
+    <milliseconds>870</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to GenerateTuples must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>182</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+</stylecopresultscache>

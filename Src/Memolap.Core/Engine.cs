@@ -8,7 +8,7 @@
     public class Engine
     {
         private IDictionary<string, Dimension> dimensions = new Dictionary<string, Dimension>();
-        private IList<Tuple> tuples = new List<Tuple>();
+        private IList<TupleObject> tuples = new List<TupleObject>();
 
         public Dimension CreateDimension(string name)
         {
@@ -33,20 +33,20 @@
             return this.dimensions.Values;
         }
 
-        public void AddTuple(Tuple tuple)
+        public void AddTuple(TupleObject tuple)
         {
             this.tuples.Add(tuple);
         }
 
-        public Tuple AddTuple(IDictionary<string, object> values)
+        public TupleObject AddTuple(IDictionary<string, object> values)
         {
-            var tuple = new Tuple(this, values);
+            var tuple = new TupleObject(this, values);
             this.AddTuple(tuple);
 
             return tuple;
         }
 
-        public IEnumerable<Tuple> GetTuples(IDictionary<string, object> values)
+        public IEnumerable<TupleObject> GetTuples(IDictionary<string, object> values)
         {
             foreach (var tuple in this.tuples)
                 if (tuple.Match(values))
@@ -92,7 +92,7 @@
             return vals;
         }
 
-        public IDictionary<Value, object> MapReduceTuplesValues(IDictionary<string, object> values, string dimension, Func<Tuple, object> newobj, Action<Tuple, object> process)
+        public IDictionary<Value, object> MapReduceTuplesValues(IDictionary<string, object> values, string dimension, Func<TupleObject, object> newobj, Action<TupleObject, object> process)
         {
             IList<Value> vals = new List<Value>();
             IList<object> objects = new List<object>();

@@ -32,5 +32,23 @@ namespace Memolap.Core.Test
             Assert.AreEqual(1, bank.Dimensions.Count);
             Assert.AreEqual(0, bank.GetDimensionOffset("Country"));
         }
+
+        [TestMethod]
+        public void CreateTuple()
+        {
+            DataBank sales = new DataBank("Sales");
+
+            TupleObject tuple = sales.CreateTuple(new Dictionary<string, object>
+            {
+                { "Country", "Canada" },
+                { "Year", 2012 }
+            }, 100);
+
+            Assert.IsNotNull(tuple);
+            Assert.AreEqual(2, sales.Dimensions.Count);
+            Assert.AreEqual("Canada", tuple.GetValue("Country").Object);
+            Assert.AreEqual(2012, tuple.GetValue("Year").Object);
+            Assert.AreEqual(100, tuple.Data);
+        }
     }
 }

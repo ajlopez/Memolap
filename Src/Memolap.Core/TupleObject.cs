@@ -14,6 +14,12 @@
             this.values = new List<Value>();
         }
 
+        public TupleObject(IList<Value> values, object data)
+        {
+            this.values = values;
+            this.Data = data;
+        }
+
         public object Data { get; set; }
 
         public TupleObject(Engine engine, IDictionary<string, object> values)

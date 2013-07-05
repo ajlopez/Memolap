@@ -9,21 +9,21 @@
     [TestClass]
     public class TupleObjectTests
     {
-        private DataBank bank;
+        private TupleSet set;
 
         [TestInitialize]
         public void Setup()
         {
-            this.bank = new DataBank("Test");
-            this.bank.CreateDimension("Country");
-            this.bank.CreateDimension("Category");
-            this.bank.CreateDimension("Product");
+            this.set = new TupleSet("Test");
+            this.set.CreateDimension("Country");
+            this.set.CreateDimension("Category");
+            this.set.CreateDimension("Product");
         }
 
         [TestMethod]
         public void HasValue()
         {
-            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
+            var tuple = this.set.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }
@@ -39,7 +39,7 @@
         [TestMethod]
         public void SetValue()
         {
-            var tuple = this.bank.CreateTuple();
+            var tuple = this.set.CreateTuple();
             tuple.SetValue("Country", "Argentina");
             Assert.IsTrue(tuple.HasValue("Country", "Argentina"));
             tuple.SetValue("Country", "Uruguay");
@@ -50,7 +50,7 @@
         [TestMethod]
         public void CloneTuple()
         {
-            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
+            var tuple = this.set.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }
@@ -70,7 +70,7 @@
         [TestMethod]
         public void Match()
         {
-            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
+            var tuple = this.set.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }
@@ -108,7 +108,7 @@
         [TestMethod]
         public void MatchWithNull()
         {
-            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
+            var tuple = this.set.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }

@@ -7,48 +7,48 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Memolap.Core.Test
 {
     [TestClass]
-    public class DataBankTests
+    public class TupleSetTests
     {
         [TestMethod]
-        public void CreateDataBank()
+        public void CreateTupleSet()
         {
-            DataBank bank = new DataBank("Test");
+            TupleSet set = new TupleSet("Test");
 
-            Assert.AreEqual("Test", bank.Name);
-            Assert.IsNotNull(bank.Dimensions);
-            Assert.AreEqual(0, bank.Dimensions.Count);
-            Assert.AreEqual(-1, bank.GetDimensionOffset("Unknown"));
+            Assert.AreEqual("Test", set.Name);
+            Assert.IsNotNull(set.Dimensions);
+            Assert.AreEqual(0, set.Dimensions.Count);
+            Assert.AreEqual(-1, set.GetDimensionOffset("Unknown"));
         }
 
         [TestMethod]
         public void CreateDimension()
         {
-            DataBank bank = new DataBank("Data");
+            TupleSet set = new TupleSet("Data");
 
-            Dimension result = bank.CreateDimension("Country");
+            Dimension result = set.CreateDimension("Country");
 
             Assert.IsNotNull(result);
             Assert.AreEqual("Country", result.Name);
             Assert.AreEqual("Countries", result.SetName);
-            Assert.AreEqual(1, bank.Dimensions.Count);
-            Assert.AreEqual(0, bank.GetDimensionOffset("Country"));
+            Assert.AreEqual(1, set.Dimensions.Count);
+            Assert.AreEqual(0, set.GetDimensionOffset("Country"));
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void RaiseIfDuplicatedDimension()
         {
-            DataBank bank = new DataBank("Data");
-            bank.CreateDimension("Country");
-            bank.CreateDimension("Country");
+            TupleSet set = new TupleSet("Data");
+            set.CreateDimension("Country");
+            set.CreateDimension("Country");
         }
 
         [TestMethod]
         public void GetUnknownDimensionAsNull()
         {
-            DataBank bank = new DataBank("Data");
+            TupleSet set = new TupleSet("Data");
 
-            Dimension result = bank.GetDimension("Country");
+            Dimension result = set.GetDimension("Country");
 
             Assert.IsNull(result);
         }
@@ -56,10 +56,10 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void GetDimension()
         {
-            DataBank bank = new DataBank("Data");
+            TupleSet set = new TupleSet("Data");
 
-            Dimension dimension = bank.CreateDimension("Country");
-            Dimension result = bank.GetDimension("Country");
+            Dimension dimension = set.CreateDimension("Country");
+            Dimension result = set.GetDimension("Country");
 
             Assert.IsNotNull(result);
             Assert.AreEqual(dimension, result);
@@ -69,13 +69,13 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void GetDimensions()
         {
-            DataBank bank = new DataBank("Data");
+            TupleSet set = new TupleSet("Data");
             
-            bank.CreateDimension("Country");
-            bank.CreateDimension("Product");
-            bank.CreateDimension("Category");
+            set.CreateDimension("Country");
+            set.CreateDimension("Product");
+            set.CreateDimension("Category");
 
-            var result = bank.Dimensions;
+            var result = set.Dimensions;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result.Count);
@@ -90,7 +90,7 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void CreateTuple()
         {
-            DataBank sales = new DataBank("Sales");
+            TupleSet sales = new TupleSet("Sales");
 
             TupleObject tuple = sales.CreateTuple(new Dictionary<string, object>
             {
@@ -108,7 +108,7 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void GetTupleCount()
         {
-            DataBank sales = new DataBank("Sales");
+            TupleSet sales = new TupleSet("Sales");
 
             sales.CreateTuple(new Dictionary<string, object>()
             {
@@ -130,7 +130,7 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void GenerateTuplesAndGetCount()
         {
-            DataBank sales = new DataBank("Sales");
+            TupleSet sales = new TupleSet("Sales");
             
             GenerateTuples(sales, 3, 2);
 
@@ -140,7 +140,7 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void GetDimensionOneTuples()
         {
-            DataBank sales = new DataBank("Sales");
+            TupleSet sales = new TupleSet("Sales");
 
             GenerateTuples(sales, 3, 4, 5);
 
@@ -151,7 +151,7 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void GetDimensionOneManyTuples()
         {
-            DataBank sales = new DataBank("Sales");
+            TupleSet sales = new TupleSet("Sales");
 
             GenerateTuples(sales, 3, 40, 50);
 
@@ -162,7 +162,7 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void GetTuplesValues()
         {
-            DataBank sales = new DataBank("Sales");
+            TupleSet sales = new TupleSet("Sales");
 
             GenerateTuples(sales, 3, 4, 5, 2);
 
@@ -178,7 +178,7 @@ namespace Memolap.Core.Test
         [TestMethod]
         public void MapReduceTuplesValues()
         {
-            DataBank sales = new DataBank("Sales");
+            TupleSet sales = new TupleSet("Sales");
 
             GenerateTuples(sales, 3, 4, 5, 2);
 
@@ -189,7 +189,7 @@ namespace Memolap.Core.Test
             Assert.IsTrue(result.Any(v => ((Counter)v.Value).Count == 10));
         }
 
-        private static void GenerateTuples(DataBank bank, params int[] nvalues)
+        private static void GenerateTuples(TupleSet set, params int[] nvalues)
         {
             int k;
             string[] dimensions = new string[nvalues.Length];
@@ -197,19 +197,19 @@ namespace Memolap.Core.Test
             for (k = 0; k < nvalues.Length; k++)
             {
                 dimensions[k] = string.Format("Dimension{0}", k + 1);
-                bank.CreateDimension(dimensions[k]);
+                set.CreateDimension(dimensions[k]);
             }
 
             var dict = new Dictionary<string, object>();
 
-            GenerateValue(bank, dimensions, dict, nvalues, 0);
+            GenerateValue(set, dimensions, dict, nvalues, 0);
         }
 
-        private static void GenerateValue(DataBank bank, IList<string> dimensions, Dictionary<string, object> values, IList<int> nvalues, int position)
+        private static void GenerateValue(TupleSet set, IList<string> dimensions, Dictionary<string, object> values, IList<int> nvalues, int position)
         {
             if (position >= dimensions.Count)
             {
-                bank.CreateTuple(values, 1);
+                set.CreateTuple(values, 1);
                 return;
             }
 
@@ -218,7 +218,7 @@ namespace Memolap.Core.Test
                 string value = string.Format("Value {0}", k + 1);
                 values[dimensions[position]] = value;
 
-                GenerateValue(bank, dimensions, values, nvalues, position + 1);
+                GenerateValue(set, dimensions, values, nvalues, position + 1);
             }
         }
 

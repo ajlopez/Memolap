@@ -7,19 +7,19 @@
 
     public class TupleObject
     {
-        private DataBank databank;
+        private TupleSet tupleset;
         private IList<Value> values;
 
-        public TupleObject(DataBank databank)
+        public TupleObject(TupleSet tupleset)
         {
-            this.databank = databank;
-            this.values = new Value[databank.Dimensions.Count];
+            this.tupleset = tupleset;
+            this.values = new Value[tupleset.Dimensions.Count];
             this.Data = null;
         }
 
-        public TupleObject(DataBank databank, IList<Value> values, object data)
+        public TupleObject(TupleSet tupleset, IList<Value> values, object data)
         {
-            this.databank = databank;
+            this.tupleset = tupleset;
             this.values = values;
             this.Data = data;
         }
@@ -28,12 +28,12 @@
 
         public TupleObject(IDictionary<string, object> values)
         {
-            this.values = new Value[this.databank.Dimensions.Count];
+            this.values = new Value[this.tupleset.Dimensions.Count];
 
             foreach (var val in values)
             {
-                Dimension dimension = this.databank.GetDimension(val.Key);
-                int position = this.databank.GetDimensionOffset(val.Key);
+                Dimension dimension = this.tupleset.GetDimension(val.Key);
+                int position = this.tupleset.GetDimensionOffset(val.Key);
                 this.values[position] = dimension.GetValue(val.Value);
             }
         }
@@ -42,7 +42,7 @@
         {
             this.Data = tuple.Data;
             this.values = new List<Value>(tuple.values);
-            this.databank = tuple.databank;
+            this.tupleset = tuple.tupleset;
         }
 
         public int Size { get { return this.values.Count; } }
@@ -54,14 +54,14 @@
 
         public void SetValue(string dimension, object value)
         {
-            Dimension dim = this.databank.GetDimension(dimension);
-            int position = this.databank.GetDimensionOffset(dimension);
+            Dimension dim = this.tupleset.GetDimension(dimension);
+            int position = this.tupleset.GetDimensionOffset(dimension);
             this.values[position] = dim.GetValue(value);
         }
 
         public object GetValue(string dimension)
         {
-            var value = this.values[this.databank.GetDimensionOffset(dimension)];
+            var value = this.values[this.tupleset.GetDimensionOffset(dimension)];
 
             if (value == null)
                 return null;

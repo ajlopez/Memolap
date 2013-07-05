@@ -5,13 +5,13 @@
     using System.Linq;
     using System.Text;
 
-    public class DataBank
+    public class TupleSet
     {
         private string name;
         private IList<Dimension> dimensions = new List<Dimension>();
         private IList<TupleObject> tuples = new List<TupleObject>();
 
-        public DataBank(string name) 
+        public TupleSet(string name) 
         {
             this.name = name;
         }

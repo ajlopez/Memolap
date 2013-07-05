@@ -13,9 +13,9 @@
 
         public Domain()
         {
-            this.DataBank = new DataBank("Sample");
-            this.DataBank.CreateDimension("Category");
-            this.DataBank.CreateDimension("Country");
+            this.TupleSet = new TupleSet("Sample");
+            this.TupleSet.CreateDimension("Category");
+            this.TupleSet.CreateDimension("Country");
         }
 
         public static Domain Current
@@ -28,7 +28,7 @@
             }
         }
 
-        public DataBank DataBank { get; set; }
+        public TupleSet TupleSet { get; set; }
 
         public void InitializeFromFolder(string foldername)
         {
@@ -44,7 +44,7 @@
                 return;
 
             string[] categories = File.ReadAllLines(filename);
-            var dimension = this.DataBank.GetDimension("Category");
+            var dimension = this.TupleSet.GetDimension("Category");
 
             foreach (var category in categories)
                 dimension.GetValue(category);
@@ -58,7 +58,7 @@
                 return;
 
             string[] categories = File.ReadAllLines(filename);
-            var dimension = this.DataBank.GetDimension("Country");
+            var dimension = this.TupleSet.GetDimension("Country");
 
             foreach (var category in categories)
                 dimension.GetValue(category);

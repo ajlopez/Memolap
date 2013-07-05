@@ -10,21 +10,21 @@ using WebSample.Models;
 
     public class HomeController : Controller
     {
-        private DataBank bank;
+        private TupleSet set;
 
         public HomeController()
-            : this(Domain.Current.DataBank)
+            : this(Domain.Current.TupleSet)
         {
         }
 
-        public HomeController(DataBank bank)
+        public HomeController(TupleSet set)
         {
-            this.bank = bank;
+            this.set = set;
         }
 
         public ActionResult Index()
         {
-            var model = this.bank.Dimensions.Select(d => new DimensionModel() { Name = d.Name, SetName = d.SetName }).ToList();
+            var model = this.set.Dimensions.Select(d => new DimensionModel() { Name = d.Name, SetName = d.SetName }).ToList();
             return View(model);
         }
     }

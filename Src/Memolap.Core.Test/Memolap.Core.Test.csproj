@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBankTests.cs" />
+    <Compile Include="TupleSetTests.cs" />
     <Compile Include="DimensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TupleObjectTests.cs" />

@@ -16,7 +16,7 @@
             Domain domain = new Domain();
             domain.InitializeFromFolder("WebSampleTestFiles");
 
-            var dimension = domain.DataBank.GetDimension("Category");
+            var dimension = domain.TupleSet.GetDimension("Category");
 
             Assert.IsNotNull(dimension);
 
@@ -25,7 +25,7 @@
             Assert.IsNotNull(values);
             Assert.AreEqual(8, values.Count);
 
-            dimension = domain.DataBank.GetDimension("Country");
+            dimension = domain.TupleSet.GetDimension("Country");
 
             Assert.IsNotNull(dimension);
 

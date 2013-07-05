@@ -13,9 +13,9 @@
 
         public Domain()
         {
-            this.Engine = new Engine();
-            this.Engine.CreateDimension("Category");
-            this.Engine.CreateDimension("Country");
+            this.DataBank = new DataBank("Sample");
+            this.DataBank.CreateDimension("Category");
+            this.DataBank.CreateDimension("Country");
         }
 
         public static Domain Current
@@ -28,7 +28,7 @@
             }
         }
 
-        public Engine Engine { get; set; }
+        public DataBank DataBank { get; set; }
 
         public void InitializeFromFolder(string foldername)
         {
@@ -44,7 +44,7 @@
                 return;
 
             string[] categories = File.ReadAllLines(filename);
-            var dimension = this.Engine.GetDimension("Category");
+            var dimension = this.DataBank.GetDimension("Category");
 
             foreach (var category in categories)
                 dimension.GetValue(category);
@@ -58,7 +58,7 @@
                 return;
 
             string[] categories = File.ReadAllLines(filename);
-            var dimension = this.Engine.GetDimension("Country");
+            var dimension = this.DataBank.GetDimension("Country");
 
             foreach (var category in categories)
                 dimension.GetValue(category);

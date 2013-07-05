@@ -9,22 +9,25 @@
     [TestClass]
     public class TupleObjectTests
     {
-        private Engine engine;
+        private DataBank bank;
 
         [TestInitialize]
         public void Setup()
         {
-            this.engine = new Engine();
+            this.bank = new DataBank("Test");
+            this.bank.CreateDimension("Country");
+            this.bank.CreateDimension("Category");
+            this.bank.CreateDimension("Product");
         }
 
         [TestMethod]
         public void HasValue()
         {
-            var tuple = new TupleObject(this.engine, new Dictionary<string, object>() {
+            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }
-            });
+            }, 100);
 
             Assert.IsTrue(tuple.HasValue("Country", "Argentina"));
             Assert.IsTrue(tuple.HasValue("Category", "Beverages"));
@@ -36,10 +39,10 @@
         [TestMethod]
         public void SetValue()
         {
-            var tuple = new TupleObject();
-            tuple.SetValue(this.engine, "Country", "Argentina");
+            var tuple = this.bank.CreateTuple();
+            tuple.SetValue("Country", "Argentina");
             Assert.IsTrue(tuple.HasValue("Country", "Argentina"));
-            tuple.SetValue(this.engine, "Country", "Uruguay");
+            tuple.SetValue("Country", "Uruguay");
             Assert.IsTrue(tuple.HasValue("Country", "Uruguay"));
             Assert.IsFalse(tuple.HasValue("Country", "Argentina"));
         }
@@ -47,16 +50,16 @@
         [TestMethod]
         public void CloneTuple()
         {
-            var tuple = new TupleObject(this.engine, new Dictionary<string, object>() {
+            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }
-            });
+            }, 100);
             var newtuple = new TupleObject(tuple);
             Assert.IsTrue(newtuple.HasValue("Country", "Argentina"));
             Assert.IsTrue(newtuple.HasValue("Category", "Beverages"));
             Assert.IsTrue(newtuple.HasValue("Product", "Beer"));
-            newtuple.SetValue(this.engine, "Country", "Uruguay");
+            newtuple.SetValue("Country", "Uruguay");
             Assert.IsFalse(newtuple.HasValue("Country", "Argentina"));
             Assert.IsTrue(tuple.HasValue("Country", "Argentina"));
             Assert.IsTrue(newtuple.HasValue("Country", "Uruguay"));
@@ -67,11 +70,11 @@
         [TestMethod]
         public void Match()
         {
-            var tuple = new TupleObject(this.engine, new Dictionary<string, object>() {
+            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }
-            });
+            }, 100);
 
             Assert.IsTrue(tuple.Match(new Dictionary<string, object>() { 
                 { "Country", "Argentina" }
@@ -105,11 +108,11 @@
         [TestMethod]
         public void MatchWithNull()
         {
-            var tuple = new TupleObject(this.engine, new Dictionary<string, object>() {
+            var tuple = this.bank.CreateTuple(new Dictionary<string, object>() {
                 { "Country", "Argentina" },
                 { "Category", "Beverages" },
                 { "Product", "Beer" }
-            });
+            }, 100);
 
             Assert.IsTrue(tuple.Match(new Dictionary<string, object>() { 
                 { "Country", null }

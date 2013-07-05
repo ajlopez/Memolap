@@ -10,21 +10,21 @@ using WebSample.Models;
 
     public class HomeController : Controller
     {
-        private Engine engine;
+        private DataBank bank;
 
         public HomeController()
-            : this(Domain.Current.Engine)
+            : this(Domain.Current.DataBank)
         {
         }
 
-        public HomeController(Engine engine)
+        public HomeController(DataBank bank)
         {
-            this.engine = engine;
+            this.bank = bank;
         }
 
         public ActionResult Index()
         {
-            var model = this.engine.GetDimensions().Select(d => new DimensionModel() { Name = d.Name, SetName = d.SetName }).ToList();
+            var model = this.bank.Dimensions.Select(d => new DimensionModel() { Name = d.Name, SetName = d.SetName }).ToList();
             return View(model);
         }
     }

@@ -19,7 +19,7 @@
 
         public IList<Dimension> Dimensions { get { return this.dimensions; } }
 
-        public Dimension AddDimension(string name)
+        public Dimension CreateDimension(string name)
         {
             Dimension dimension = new Dimension(name);
             this.dimensions.Add(dimension);
@@ -48,7 +48,7 @@
                 if (position < 0)
                 {
                     position = this.dimensions.Count;
-                    this.AddDimension(key);
+                    this.CreateDimension(key);
                 }
 
                 positions[k++] = position;

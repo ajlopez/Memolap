@@ -25,7 +25,7 @@ namespace Memolap.Core.Test
         {
             DataBank bank = new DataBank("Data");
 
-            Dimension result = bank.AddDimension("Country");
+            Dimension result = bank.CreateDimension("Country");
 
             Assert.IsNotNull(result);
             Assert.AreEqual("Country", result.Name);

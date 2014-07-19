@@ -8,7 +8,6 @@
     public class Dimension
     {
         private IList<object> objects = new List<object>();
-        private IList<Value> values = new List<Value>();
 
         public Dimension(string name)
         {
@@ -22,22 +21,25 @@
 
         public string SetName { get; set; }
 
-        public Value GetValue(object obj)
+        public object GetValue(int position)
+        {
+            return this.objects[position];
+        }
+
+        public int GetValue(object obj)
         {
             int index = this.objects.IndexOf(obj);
 
             if (index >= 0)
-                return this.values[index];
+                return index;
 
-            var newvalue = new Value(this, obj);
             this.objects.Add(obj);
-            this.values.Add(newvalue);
-            return newvalue;
+            return this.objects.Count - 1;
         }
 
-        public ICollection<Value> GetValues()
+        public ICollection<object> GetValues()
         {
-            return this.values;
+            return this.objects;
         }
     }
 }

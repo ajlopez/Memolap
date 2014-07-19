@@ -70,7 +70,7 @@
                 positions[k++] = position;
             }
 
-            Value[] vals = new Value[this.dimensions.Count];
+            int[] vals = new int[this.dimensions.Count];
 
             k = 0;
 
@@ -78,7 +78,7 @@
             {
                 int position = positions[k];
                 Dimension dimension = this.dimensions[position];
-                Value val = dimension.GetValue(values[key]);
+                int val = dimension.GetValue(values[key]);
                 vals[position] = val;
                 k++;
             }

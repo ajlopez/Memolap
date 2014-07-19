@@ -8,16 +8,16 @@
     public class TupleObject
     {
         private TupleSet tupleset;
-        private IList<Value> values;
+        private IList<int> values;
 
         public TupleObject(TupleSet tupleset)
         {
             this.tupleset = tupleset;
-            this.values = new Value[tupleset.Dimensions.Count];
+            this.values = new int[tupleset.Dimensions.Count];
             this.Data = null;
         }
 
-        public TupleObject(TupleSet tupleset, IList<Value> values, object data)
+        public TupleObject(TupleSet tupleset, IList<int> values, object data)
         {
             this.tupleset = tupleset;
             this.values = values;
@@ -26,7 +26,7 @@
 
         public TupleObject(IDictionary<string, object> values)
         {
-            this.values = new Value[this.tupleset.Dimensions.Count];
+            this.values = new int[this.tupleset.Dimensions.Count];
 
             foreach (var val in values)
             {
@@ -39,7 +39,7 @@
         public TupleObject(TupleObject tuple)
         {
             this.Data = tuple.Data;
-            this.values = new List<Value>(tuple.values);
+            this.values = new List<int>(tuple.values);
             this.tupleset = tuple.tupleset;
         }
 
@@ -49,7 +49,9 @@
 
         public bool HasValue(string dimension, object value)
         {
-            return this.values.Any(v => v != null && v.Dimension.Name.Equals(dimension) && (value == null || v.Object.Equals(value)));
+            int position = this.tupleset.GetDimensionOffset(dimension);
+            int ivalue = this.tupleset.GetDimension(dimension).GetValue(value);
+            return this.values[position] == ivalue;
         }
 
         public void SetValue(string dimension, object value)
@@ -63,15 +65,20 @@
         {
             var value = this.values[this.tupleset.GetDimensionOffset(dimension)];
 
-            if (value == null)
+            if (value == -1)
                 return null;
 
-            return value.Object;
+            return this.tupleset.GetDimension(dimension).GetValue(value);
         }
 
         public IEnumerable<object> GetValues()
         {
-            return this.values.Select(v => v.Object);
+            object[] vals = new object[this.tupleset.Dimensions.Count];
+
+            for (int k = 0; k < vals.Length; k++)
+                vals[k] = this.tupleset.Dimensions[k].GetValue(this.values[k]);
+
+            return vals;
         }
 
         public bool Match(IDictionary<string, object> values)

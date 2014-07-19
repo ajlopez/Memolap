@@ -21,9 +21,7 @@
         public void GetValue()
         {
             var result = this.dimension.GetValue("Argentina");
-            Assert.IsNotNull(result);
-            Assert.AreSame(this.dimension, result.Dimension);
-            Assert.AreEqual("Argentina", result.Object);
+            Assert.AreEqual("Argentina", this.dimension.GetValue(result));
         }
 
         [TestMethod]

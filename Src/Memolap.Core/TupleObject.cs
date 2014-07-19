@@ -50,8 +50,16 @@
         public bool HasValue(string dimension, object value)
         {
             int position = this.tupleset.GetDimensionOffset(dimension);
-            int ivalue = this.tupleset.GetDimension(dimension).GetValue(value);
-            return this.values[position] == ivalue;
+
+            if (position < 0)
+                return false;
+
+            object val = this.tupleset.GetDimension(dimension).GetValue(this.values[position]);
+
+            if (value == null)
+                return val == null;
+
+            return value.Equals(val);
         }
 
         public void SetValue(string dimension, object value)
@@ -84,8 +92,19 @@
         public bool Match(IDictionary<string, object> values)
         {
             foreach (var val in values)
+            {
+                object value = val.Value;
+                string dimname = val.Key;
+
+                if (this.tupleset.GetDimension(dimname) == null)
+                    return false;
+
+                if (value == null)
+                    continue;
+
                 if (!this.HasValue(val.Key, val.Value))
                     return false;
+            }
 
             return true;
         }

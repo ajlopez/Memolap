@@ -23,18 +23,24 @@
 
         public object GetValue(int position)
         {
-            return this.objects[position];
+            if (position == 0)
+                return null;
+
+            return this.objects[position - 1];
         }
 
         public int GetValue(object obj)
         {
+            if (obj == null)
+                return 0;
+
             int index = this.objects.IndexOf(obj);
 
             if (index >= 0)
-                return index;
+                return index + 1;
 
             this.objects.Add(obj);
-            return this.objects.Count - 1;
+            return this.objects.Count;
         }
 
         public ICollection<object> GetValues()

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Memolap.Core.Test
+﻿namespace Memolap.Core.Test
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class TupleSetTests
     {
@@ -92,11 +92,13 @@ namespace Memolap.Core.Test
         {
             TupleSet sales = new TupleSet("Sales");
 
-            TupleObject tuple = sales.CreateTuple(new Dictionary<string, object>
-            {
-                { "Country", "Canada" },
-                { "Year", 2012 }
-            }, 100);
+            TupleObject tuple = sales.CreateTuple(
+                new Dictionary<string, object>
+                {
+                    { "Country", "Canada" },
+                    { "Year", 2012 }
+                }, 
+                100);
 
             Assert.IsNotNull(tuple);
             Assert.AreEqual(2, sales.Dimensions.Count);
@@ -110,19 +112,23 @@ namespace Memolap.Core.Test
         {
             TupleSet sales = new TupleSet("Sales");
 
-            sales.CreateTuple(new Dictionary<string, object>()
-            {
-                { "Country", "Argentina" },
-                { "Category", "Beverages" },
-                { "Product", "Beer" }
-            }, 100);
+            sales.CreateTuple(
+                new Dictionary<string, object>()
+                {
+                    { "Country", "Argentina" },
+                    { "Category", "Beverages" },
+                    { "Product", "Beer" }
+                },
+                100);
 
-            sales.CreateTuple(new Dictionary<string, object>()
-            {
-                { "Country", "Argentina" },
-                { "Category", "Beverages" },
-                { "Product", "Coke" }
-            }, 200);
+            sales.CreateTuple(
+                new Dictionary<string, object>()
+                {
+                    { "Country", "Argentina" },
+                    { "Category", "Beverages" },
+                    { "Product", "Coke" }
+                },
+                200);
 
             Assert.AreEqual(2, sales.GetTupleCount());
         }

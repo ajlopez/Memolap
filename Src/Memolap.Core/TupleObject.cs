@@ -24,8 +24,6 @@
             this.Data = data;
         }
 
-        public object Data { get; set; }
-
         public TupleObject(IDictionary<string, object> values)
         {
             this.values = new Value[this.tupleset.Dimensions.Count];
@@ -44,6 +42,8 @@
             this.values = new List<Value>(tuple.values);
             this.tupleset = tuple.tupleset;
         }
+
+        public object Data { get; set; }
 
         public int Size { get { return this.values.Count; } }
 

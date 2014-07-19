@@ -1,46 +1,5 @@
 <stylecopresultscache>
   <version>10</version>
-  <sourcecode name="Dimension.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>01/05/2013 15:31:51</timestamp>
-      <milliseconds>526</milliseconds>
-    </settings>
-    <timestamp>01/05/2013 15:06:41</timestamp>
-    <milliseconds>380</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>01/05/2013 15:31:51</timestamp>
-      <milliseconds>526</milliseconds>
-    </settings>
-    <timestamp>01/05/2013 13:35:15</timestamp>
-    <milliseconds>99</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="Value.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>01/05/2013 15:31:51</timestamp>
-      <milliseconds>526</milliseconds>
-    </settings>
-    <timestamp>01/05/2013 15:02:55</timestamp>
-    <milliseconds>174</milliseconds>
-    <violations>
-      <violation namespace="Microsoft.StyleCop.CSharp.LayoutRules" rule="ElementMustNotBeOnSingleLine" ruleCheckId="SA1502">
-        <context>The property must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="Microsoft.StyleCop.CSharp.LayoutRules" rule="ElementMustNotBeOnSingleLine" ruleCheckId="SA1502">
-        <context>The property must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>21</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <project key="-1615803179">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="Engine.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>01/05/2013 15:31:51</timestamp>
@@ -50,4 +9,52 @@
     <milliseconds>588</milliseconds>
     <violations />
   </sourcecode>
+  <sourcecode name="Dimension.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>07/04/2013 07:23:18</timestamp>
+    <milliseconds>249</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TupleSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>07/05/2013 06:38:34</timestamp>
+    <milliseconds>789</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 13:35:15</timestamp>
+    <milliseconds>99</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Value.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 15:02:55</timestamp>
+    <milliseconds>174</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TupleObject.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>07/19/2014 17:19:39</timestamp>
+    <milliseconds>702</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="-1615803179">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
 </stylecopresultscache>

@@ -8,16 +8,16 @@
     public class TupleObject
     {
         private TupleSet tupleset;
-        private IList<int> values;
+        private short[] values;
 
         public TupleObject(TupleSet tupleset)
         {
             this.tupleset = tupleset;
-            this.values = new int[tupleset.Dimensions.Count];
+            this.values = new short[tupleset.Dimensions.Count];
             this.Data = null;
         }
 
-        public TupleObject(TupleSet tupleset, IList<int> values, object data)
+        public TupleObject(TupleSet tupleset, short[] values, object data)
         {
             this.tupleset = tupleset;
             this.values = values;
@@ -26,7 +26,7 @@
 
         public TupleObject(IDictionary<string, object> values)
         {
-            this.values = new int[this.tupleset.Dimensions.Count];
+            this.values = new short[this.tupleset.Dimensions.Count];
 
             foreach (var val in values)
             {
@@ -39,13 +39,14 @@
         public TupleObject(TupleObject tuple)
         {
             this.Data = tuple.Data;
-            this.values = new List<int>(tuple.values);
+            this.values = new short[tuple.values.Length];
+            Array.Copy(tuple.values, this.values, this.values.Length);
             this.tupleset = tuple.tupleset;
         }
 
         public object Data { get; set; }
 
-        public int Size { get { return this.values.Count; } }
+        public int Size { get { return this.values.Length; } }
 
         public bool HasValue(string dimension, object value)
         {

@@ -29,7 +29,7 @@
             return this.objects[position - 1];
         }
 
-        public int GetValue(object obj)
+        public short GetValue(object obj)
         {
             if (obj == null)
                 return 0;
@@ -37,10 +37,10 @@
             int index = this.objects.IndexOf(obj);
 
             if (index >= 0)
-                return index + 1;
+                return (short)(index + 1);
 
             this.objects.Add(obj);
-            return this.objects.Count;
+            return (short)this.objects.Count;
         }
 
         public ICollection<object> GetValues()

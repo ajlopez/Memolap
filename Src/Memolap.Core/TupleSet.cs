@@ -70,7 +70,7 @@
                 positions[k++] = position;
             }
 
-            int[] vals = new int[this.dimensions.Count];
+            short[] vals = new short[this.dimensions.Count];
 
             k = 0;
 
@@ -78,7 +78,7 @@
             {
                 int position = positions[k];
                 Dimension dimension = this.dimensions[position];
-                int val = dimension.GetValue(values[key]);
+                short val = dimension.GetValue(values[key]);
                 vals[position] = val;
                 k++;
             }

@@ -181,20 +181,6 @@
             Assert.IsTrue(values.Any(val => val.Equals("Value 4")));
         }
 
-        [TestMethod]
-        public void MapReduceTuplesValues()
-        {
-            TupleSet sales = new TupleSet("Sales");
-
-            GenerateTuples(sales, 3, 4, 5, 2);
-
-            var result = sales.MapReduceTuplesValues(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }, "Dimension2", tuple => new Counter(), (tuple, obj) => { ((Counter)obj).Count++; });
-            Assert.IsNotNull(result);
-            Assert.AreEqual(4, result.Count);
-            Assert.IsTrue(result.Any(v => v.Value is Counter));
-            Assert.IsTrue(result.Any(v => ((Counter)v.Value).Count == 10));
-        }
-
         private static void GenerateTuples(TupleSet set, params int[] nvalues)
         {
             int k;

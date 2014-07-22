@@ -51,6 +51,15 @@
         }
 
         [TestMethod]
+        public void GetValueOnEmptyDimension()
+        {
+            var tuple = this.set.CreateTuple();
+            Assert.IsNull(tuple.GetValue("Country"));
+
+            tuple.GetValues().All(v => v == null);
+        }
+
+        [TestMethod]
         public void CloneTuple()
         {
             var tuple = this.set.CreateTuple(

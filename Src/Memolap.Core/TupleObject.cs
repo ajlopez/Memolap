@@ -74,9 +74,6 @@
         {
             var value = this.values[this.tupleset.GetDimensionOffset(dimension)];
 
-            if (value == -1)
-                return null;
-
             return this.tupleset.GetDimension(dimension).GetValue(value);
         }
 

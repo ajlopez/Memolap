@@ -51,6 +51,22 @@
         }
 
         [TestMethod]
+        public void GetValues()
+        {
+            var tuple = this.set.CreateTuple();
+            tuple.SetValue("Country", "Argentina");
+            tuple.SetValue("Category", "Beverages");
+
+            var values = tuple.GetValues().ToList();
+
+            Assert.IsNotNull(values);
+            Assert.AreEqual(3, values.Count);
+            Assert.AreEqual("Argentina", values[0]);
+            Assert.AreEqual("Beverages", values[1]);
+            Assert.IsNull(values[2]);
+        }
+
+        [TestMethod]
         public void GetValueOnEmptyDimension()
         {
             var tuple = this.set.CreateTuple();

@@ -12,7 +12,7 @@
         [TestMethod]
         public void CreateTupleSet()
         {
-            TupleSet set = new TupleSet("Test");
+            TupleSet<int> set = new TupleSet<int>("Test");
 
             Assert.AreEqual("Test", set.Name);
             Assert.IsNotNull(set.Dimensions);
@@ -23,7 +23,7 @@
         [TestMethod]
         public void CreateDimension()
         {
-            TupleSet set = new TupleSet("Data");
+            TupleSet<int> set = new TupleSet<int>("Data");
 
             Dimension result = set.CreateDimension("Country");
 
@@ -38,7 +38,7 @@
         [ExpectedException(typeof(InvalidOperationException))]
         public void RaiseIfDuplicatedDimension()
         {
-            TupleSet set = new TupleSet("Data");
+            TupleSet<int> set = new TupleSet<int>("Data");
             set.CreateDimension("Country");
             set.CreateDimension("Country");
         }
@@ -46,7 +46,7 @@
         [TestMethod]
         public void GetUnknownDimensionAsNull()
         {
-            TupleSet set = new TupleSet("Data");
+            TupleSet<int> set = new TupleSet<int>("Data");
 
             Dimension result = set.GetDimension("Country");
 
@@ -56,7 +56,7 @@
         [TestMethod]
         public void GetDimension()
         {
-            TupleSet set = new TupleSet("Data");
+            TupleSet<int> set = new TupleSet<int>("Data");
 
             Dimension dimension = set.CreateDimension("Country");
             Dimension result = set.GetDimension("Country");
@@ -69,7 +69,7 @@
         [TestMethod]
         public void GetDimensions()
         {
-            TupleSet set = new TupleSet("Data");
+            TupleSet<int> set = new TupleSet<int>("Data");
             
             set.CreateDimension("Country");
             set.CreateDimension("Product");
@@ -90,9 +90,9 @@
         [TestMethod]
         public void CreateTuple()
         {
-            TupleSet sales = new TupleSet("Sales");
+            TupleSet<int> sales = new TupleSet<int>("Sales");
 
-            TupleObject tuple = sales.CreateTuple(
+            TupleObject<int> tuple = sales.CreateTuple(
                 new Dictionary<string, object>
                 {
                     { "Country", "Canada" },
@@ -110,7 +110,7 @@
         [TestMethod]
         public void GetTupleCount()
         {
-            TupleSet sales = new TupleSet("Sales");
+            TupleSet<int> sales = new TupleSet<int>("Sales");
 
             sales.CreateTuple(
                 new Dictionary<string, object>()
@@ -136,7 +136,7 @@
         [TestMethod]
         public void GenerateTuplesAndGetCount()
         {
-            TupleSet sales = new TupleSet("Sales");
+            TupleSet<int> sales = new TupleSet<int>("Sales");
             
             GenerateTuples(sales, 3, 2);
 
@@ -146,7 +146,7 @@
         [TestMethod]
         public void GetDimensionOneTuples()
         {
-            TupleSet sales = new TupleSet("Sales");
+            TupleSet<int> sales = new TupleSet<int>("Sales");
 
             GenerateTuples(sales, 3, 4, 5);
 
@@ -157,7 +157,7 @@
         [TestMethod]
         public void GetDimensionOneManyTuples()
         {
-            TupleSet sales = new TupleSet("Sales");
+            TupleSet<int> sales = new TupleSet<int>("Sales");
 
             GenerateTuples(sales, 3, 40, 50);
 
@@ -168,7 +168,7 @@
         [TestMethod]
         public void GetTuplesValues()
         {
-            TupleSet sales = new TupleSet("Sales");
+            TupleSet<int> sales = new TupleSet<int>("Sales");
 
             GenerateTuples(sales, 3, 4, 5, 2);
 
@@ -181,7 +181,7 @@
             Assert.IsTrue(values.Any(val => val.Equals("Value 4")));
         }
 
-        private static void GenerateTuples(TupleSet set, params int[] nvalues)
+        private static void GenerateTuples(TupleSet<int> set, params int[] nvalues)
         {
             int k;
             string[] dimensions = new string[nvalues.Length];
@@ -197,7 +197,7 @@
             GenerateValue(set, dimensions, dict, nvalues, 0);
         }
 
-        private static void GenerateValue(TupleSet set, IList<string> dimensions, Dictionary<string, object> values, IList<int> nvalues, int position)
+        private static void GenerateValue(TupleSet<int> set, IList<string> dimensions, Dictionary<string, object> values, IList<int> nvalues, int position)
         {
             if (position >= dimensions.Count)
             {

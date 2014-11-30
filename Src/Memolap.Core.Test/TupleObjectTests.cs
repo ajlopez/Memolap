@@ -9,12 +9,12 @@
     [TestClass]
     public class TupleObjectTests
     {
-        private TupleSet set;
+        private TupleSet<int> set;
 
         [TestInitialize]
         public void Setup()
         {
-            this.set = new TupleSet("Test");
+            this.set = new TupleSet<int>("Test");
             this.set.CreateDimension("Country");
             this.set.CreateDimension("Category");
             this.set.CreateDimension("Product");
@@ -87,7 +87,7 @@
                 },
                 100);
 
-            var newtuple = new TupleObject(tuple);
+            var newtuple = new TupleObject<int>(tuple);
             Assert.IsTrue(newtuple.HasValue("Country", "Argentina"));
             Assert.IsTrue(newtuple.HasValue("Category", "Beverages"));
             Assert.IsTrue(newtuple.HasValue("Product", "Beer"));

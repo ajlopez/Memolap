@@ -5,19 +5,19 @@
     using System.Linq;
     using System.Text;
 
-    public class TupleObject
+    public class TupleObject<T>
     {
-        private TupleSet tupleset;
+        private TupleSet<T> tupleset;
         private short[] values;
 
-        public TupleObject(TupleSet tupleset)
+        public TupleObject(TupleSet<T> tupleset)
         {
             this.tupleset = tupleset;
             this.values = new short[tupleset.Dimensions.Count];
-            this.Data = null;
+            this.Data = default(T);
         }
 
-        public TupleObject(TupleSet tupleset, short[] values, object data)
+        public TupleObject(TupleSet<T> tupleset, short[] values, T data)
         {
             this.tupleset = tupleset;
             this.values = values;
@@ -34,9 +34,11 @@
                 int position = this.tupleset.GetDimensionOffset(val.Key);
                 this.values[position] = dimension.GetValue(val.Value);
             }
+
+            this.Data = default(T);
         }
 
-        public TupleObject(TupleObject tuple)
+        public TupleObject(TupleObject<T> tuple)
         {
             this.Data = tuple.Data;
             this.values = new short[tuple.values.Length];
@@ -44,7 +46,7 @@
             this.tupleset = tuple.tupleset;
         }
 
-        public object Data { get; set; }
+        public T Data { get; set; }
 
         public int Size { get { return this.values.Length; } }
 

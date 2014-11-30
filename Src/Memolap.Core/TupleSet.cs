@@ -5,11 +5,11 @@
     using System.Linq;
     using System.Text;
 
-    public class TupleSet
+    public class TupleSet<T>
     {
         private string name;
         private IList<Dimension> dimensions = new List<Dimension>();
-        private IList<TupleObject> tuples = new List<TupleObject>();
+        private IList<TupleObject<T>> tuples = new List<TupleObject<T>>();
 
         public TupleSet(string name) 
         {
@@ -44,14 +44,14 @@
             return -1;
         }
 
-        public TupleObject CreateTuple()
+        public TupleObject<T> CreateTuple()
         {
-            TupleObject tuple = new TupleObject(this);
+            TupleObject<T> tuple = new TupleObject<T>(this);
             this.tuples.Add(tuple);
             return tuple;
         }
 
-        public TupleObject CreateTuple(IDictionary<string, object> values, object data)
+        public TupleObject<T> CreateTuple(IDictionary<string, object> values, T data)
         {
             int[] positions = new int[values.Count];
             IList<string> keys = values.Keys.ToList();
@@ -83,14 +83,14 @@
                 k++;
             }
 
-            var tuple = new TupleObject(this, vals, data);
+            var tuple = new TupleObject<T>(this, vals, data);
 
             this.tuples.Add(tuple);
 
             return tuple;
         }
 
-        public IEnumerable<TupleObject> GetTuples(IDictionary<string, object> values)
+        public IEnumerable<TupleObject<T>> GetTuples(IDictionary<string, object> values)
         {
             foreach (var tuple in this.tuples)
                 if (tuple.Match(values))

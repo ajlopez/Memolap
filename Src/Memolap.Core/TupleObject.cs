@@ -100,9 +100,9 @@
                     return false;
 
                 if (value == null)
-                    continue;
+                    return true;
 
-                if (!this.HasValue(val.Key, val.Value))
+                if (!this.HasValue(dimname, value))
                     return false;
             }
 

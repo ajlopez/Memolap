@@ -181,6 +181,19 @@
             Assert.IsTrue(values.Any(val => val.Equals("Value 4")));
         }
 
+        [TestMethod]
+        public void Query()
+        {
+            TupleSet<int> sales = new TupleSet<int>("Sales");
+
+            GenerateTuples(sales, 3, 4, 5, 2);
+
+            var query = sales.Query();
+
+            Assert.IsNotNull(query);
+            Assert.AreEqual(120, query.GetTuples().Count());
+        }
+
         private static void GenerateTuples(TupleSet<int> set, params int[] nvalues)
         {
             int k;

@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Query.cs" />
     <Compile Include="TupleSet.cs" />
     <Compile Include="Dimension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

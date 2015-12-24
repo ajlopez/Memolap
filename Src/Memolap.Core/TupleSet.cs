@@ -90,6 +90,11 @@
             return tuple;
         }
 
+        public IEnumerable<TupleObject<T>> GetTuples()
+        {
+            return this.tuples;
+        }
+
         public IEnumerable<TupleObject<T>> GetTuples(IDictionary<string, object> values)
         {
             foreach (var tuple in this.tuples)
@@ -114,6 +119,11 @@
         public int GetTupleCount()
         {
             return this.tuples.Count;
+        }
+
+        public Query<T> Query()
+        {
+            return new Query<T>(this);
         }
     }
 }

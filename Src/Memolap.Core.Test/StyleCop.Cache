@@ -39,6 +39,15 @@
     <milliseconds>659</milliseconds>
     <violations />
   </sourcecode>
+  <sourcecode name="TupleSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:37:51</timestamp>
+      <milliseconds>896</milliseconds>
+    </settings>
+    <timestamp>12/25/2015 06:31:54</timestamp>
+    <milliseconds>123</milliseconds>
+    <violations />
+  </sourcecode>
   <sourcecode name="TupleObjectTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>01/05/2013 15:37:51</timestamp>
@@ -46,15 +55,6 @@
     </settings>
     <timestamp>11/30/2014 19:22:36</timestamp>
     <milliseconds>341</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="TupleSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>01/05/2013 15:37:51</timestamp>
-      <milliseconds>896</milliseconds>
-    </settings>
-    <timestamp>11/30/2014 19:22:19</timestamp>
-    <milliseconds>544</milliseconds>
     <violations />
   </sourcecode>
 </stylecopresultscache>

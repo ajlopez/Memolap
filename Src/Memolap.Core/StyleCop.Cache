@@ -21,13 +21,22 @@
   <project key="-1615803179">
     <configuration>DEBUG;TRACE</configuration>
   </project>
-  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+  <sourcecode name="BaseQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
       <milliseconds>53</milliseconds>
     </settings>
-    <timestamp>01/05/2013 13:35:15</timestamp>
-    <milliseconds>99</milliseconds>
+    <timestamp>12/25/2015 06:27:48</timestamp>
+    <milliseconds>998</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>12/25/2015 06:24:11</timestamp>
+    <milliseconds>345</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="Dimension.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
@@ -39,13 +48,31 @@
     <milliseconds>826</milliseconds>
     <violations />
   </sourcecode>
+  <sourcecode name="Query.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>12/25/2015 06:29:31</timestamp>
+    <milliseconds>1</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>01/05/2013 13:35:15</timestamp>
+    <milliseconds>99</milliseconds>
+    <violations />
+  </sourcecode>
   <sourcecode name="TupleObject.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
       <milliseconds>53</milliseconds>
     </settings>
-    <timestamp>11/30/2014 19:18:56</timestamp>
-    <milliseconds>853</milliseconds>
+    <timestamp>12/24/2015 15:42:29</timestamp>
+    <milliseconds>270</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="TupleSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
@@ -53,8 +80,28 @@
       <timestamp>07/19/2014 17:19:09</timestamp>
       <milliseconds>53</milliseconds>
     </settings>
-    <timestamp>11/30/2014 19:19:13</timestamp>
-    <milliseconds>653</milliseconds>
+    <timestamp>12/24/2015 13:54:01</timestamp>
+    <milliseconds>319</milliseconds>
     <violations />
+  </sourcecode>
+  <sourcecode name="WhereQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>12/25/2015 06:29:21</timestamp>
+    <milliseconds>926</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
+        <context>The field must have an access modifier.</context>
+        <line>11</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to values must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
 </stylecopresultscache>

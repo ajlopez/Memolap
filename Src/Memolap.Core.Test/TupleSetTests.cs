@@ -194,6 +194,20 @@
             Assert.AreEqual(120, query.GetTuples().Count());
         }
 
+        [TestMethod]
+        public void WhereQuery()
+        {
+            TupleSet<int> sales = new TupleSet<int>("Sales");
+
+            GenerateTuples(sales, 3, 4, 5);
+
+            var query = sales.Query().Where(new Dictionary<string, object>() { { "Dimension1", "Value 1" } });
+
+            Assert.IsNotNull(query);
+            Assert.AreEqual(20, query.GetTuples().Count());
+            Assert.IsTrue(query.GetTuples().All(t => t.HasValue("Dimension1", "Value 1")));
+        }
+
         private static void GenerateTuples(TupleSet<int> set, params int[] nvalues)
         {
             int k;

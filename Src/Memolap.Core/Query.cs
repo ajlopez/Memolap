@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    public class Query<T>
+    public class Query<T> : BaseQuery<T>, IQuery<T>
     {
         private TupleSet<T> tupleset;
 
@@ -14,7 +14,7 @@
             this.tupleset = tupleset;
         }
 
-        public IEnumerable<TupleObject<T>> GetTuples()
+        public override IEnumerable<TupleObject<T>> GetTuples()
         {
             return this.tupleset.GetTuples();
         }

@@ -46,7 +46,7 @@
 
         public TupleObject<T> CreateTuple()
         {
-            TupleObject<T> tuple = new TupleObject<T>(this);
+            TupleObject<T> tuple = new TupleObject<T>(this.dimensions);
             this.tuples.Add(tuple);
             return tuple;
         }
@@ -83,7 +83,7 @@
                 k++;
             }
 
-            var tuple = new TupleObject<T>(this, vals, data);
+            var tuple = new TupleObject<T>(this.dimensions, vals, data);
 
             this.tuples.Add(tuple);
 

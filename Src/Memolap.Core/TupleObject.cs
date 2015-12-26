@@ -7,31 +7,31 @@
 
     public class TupleObject<T>
     {
-        private TupleSet<T> tupleset;
+        private IList<Dimension> dimensions;
         private short[] values;
 
-        public TupleObject(TupleSet<T> tupleset)
+        public TupleObject(IList<Dimension> dimensions)
         {
-            this.tupleset = tupleset;
-            this.values = new short[tupleset.Dimensions.Count];
+            this.dimensions = dimensions;
+            this.values = new short[dimensions.Count];
             this.Data = default(T);
         }
 
-        public TupleObject(TupleSet<T> tupleset, short[] values, T data)
+        public TupleObject(IList<Dimension> dimensions, short[] values, T data)
         {
-            this.tupleset = tupleset;
+            this.dimensions = dimensions;
             this.values = values;
             this.Data = data;
         }
 
         public TupleObject(IDictionary<string, object> values)
         {
-            this.values = new short[this.tupleset.Dimensions.Count];
+            this.values = new short[dimensions.Count];
 
             foreach (var val in values)
             {
-                Dimension dimension = this.tupleset.GetDimension(val.Key);
-                int position = this.tupleset.GetDimensionOffset(val.Key);
+                Dimension dimension = dimensions.First(d => d.Name == val.Key);
+                int position = dimensions.IndexOf(dimension);
                 this.values[position] = dimension.GetValue(val.Value);
             }
 
@@ -43,21 +43,23 @@
             this.Data = tuple.Data;
             this.values = new short[tuple.values.Length];
             Array.Copy(tuple.values, this.values, this.values.Length);
-            this.tupleset = tuple.tupleset;
+            this.dimensions = tuple.dimensions;
         }
 
         public T Data { get; set; }
 
         public int Size { get { return this.values.Length; } }
 
-        public bool HasValue(string dimension, object value)
+        public bool HasValue(string dimname, object value)
         {
-            int position = this.tupleset.GetDimensionOffset(dimension);
+            Dimension dimension = this.dimensions.FirstOrDefault(d => d.Name == dimname);
 
-            if (position < 0)
+            if (dimension == null)
                 return false;
 
-            object val = this.tupleset.GetDimension(dimension).GetValue(this.values[position]);
+            int position = this.dimensions.IndexOf(dimension);
+
+            object val = dimension.GetValue(this.values[position]);
 
             if (value == null)
                 return val == null;
@@ -65,26 +67,28 @@
             return value.Equals(val);
         }
 
-        public void SetValue(string dimension, object value)
+        public void SetValue(string dimname, object value)
         {
-            Dimension dim = this.tupleset.GetDimension(dimension);
-            int position = this.tupleset.GetDimensionOffset(dimension);
-            this.values[position] = dim.GetValue(value);
+            Dimension dimension = this.dimensions.First(d => d.Name == dimname);
+            int position = this.dimensions.IndexOf(dimension);
+            this.values[position] = dimension.GetValue(value);
         }
 
-        public object GetValue(string dimension)
+        public object GetValue(string dimname)
         {
-            var value = this.values[this.tupleset.GetDimensionOffset(dimension)];
+            Dimension dimension = this.dimensions.First(d => d.Name == dimname);
+            int position = this.dimensions.IndexOf(dimension);
+            var value = this.values[position];
 
-            return this.tupleset.GetDimension(dimension).GetValue(value);
+            return dimension.GetValue(value);
         }
 
         public IEnumerable<object> GetValues()
         {
-            object[] vals = new object[this.tupleset.Dimensions.Count];
+            object[] vals = new object[this.dimensions.Count];
 
             for (int k = 0; k < vals.Length; k++)
-                vals[k] = this.tupleset.Dimensions[k].GetValue(this.values[k]);
+                vals[k] = this.dimensions[k].GetValue(this.values[k]);
 
             return vals;
         }
@@ -96,7 +100,9 @@
                 object value = val.Value;
                 string dimname = val.Key;
 
-                if (this.tupleset.GetDimension(dimname) == null)
+                Dimension dimension = this.dimensions.FirstOrDefault(d => d.Name == dimname);
+
+                if (dimension == null)
                     return false;
 
                 if (value == null)

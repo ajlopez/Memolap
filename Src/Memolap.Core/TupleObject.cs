@@ -26,12 +26,12 @@
 
         public TupleObject(IDictionary<string, object> values)
         {
-            this.values = new short[dimensions.Count];
+            this.values = new short[this.dimensions.Count];
 
             foreach (var val in values)
             {
-                Dimension dimension = dimensions.First(d => d.Name == val.Key);
-                int position = dimensions.IndexOf(dimension);
+                Dimension dimension = this.dimensions.First(d => d.Name == val.Key);
+                int position = this.dimensions.IndexOf(dimension);
                 this.values[position] = dimension.GetValue(val.Value);
             }
 

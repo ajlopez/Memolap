@@ -18,9 +18,6 @@
       </violation>
     </violations>
   </sourcecode>
-  <project key="243748549">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="DimensionTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>01/05/2013 15:37:51</timestamp>
@@ -39,15 +36,6 @@
     <milliseconds>659</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="TupleSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>01/05/2013 15:37:51</timestamp>
-      <milliseconds>896</milliseconds>
-    </settings>
-    <timestamp>12/25/2015 06:31:54</timestamp>
-    <milliseconds>123</milliseconds>
-    <violations />
-  </sourcecode>
   <sourcecode name="TupleObjectTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>01/05/2013 15:37:51</timestamp>
@@ -57,4 +45,16 @@
     <milliseconds>341</milliseconds>
     <violations />
   </sourcecode>
+  <sourcecode name="TupleSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:37:51</timestamp>
+      <milliseconds>896</milliseconds>
+    </settings>
+    <timestamp>12/27/2015 06:18:39</timestamp>
+    <milliseconds>35</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="243748549">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
 </stylecopresultscache>

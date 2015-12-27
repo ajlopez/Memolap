@@ -5,7 +5,7 @@
 
     public interface IQuery<T>
     {
-        IEnumerable<TupleObject<T>> GetTuples();
+        IEnumerable<TupleObject<T>> Tuples { get; }
 
         IQuery<T> Where(IDictionary<string, object> values);
     }

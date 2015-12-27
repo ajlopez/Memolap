@@ -20,6 +20,8 @@
 
         public IList<Dimension> Dimensions { get { return this.dimensions; } }
 
+        public IEnumerable<TupleObject<T>> Tuples { get { return this.tuples; } }
+
         public Dimension CreateDimension(string name)
         {
             if (this.dimensions.Any(d => d.Name == name))

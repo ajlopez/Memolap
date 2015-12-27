@@ -7,7 +7,7 @@
 
     public abstract class BaseQuery<T> : IQuery<T>
     {
-        public abstract IEnumerable<TupleObject<T>> GetTuples();
+        public abstract IEnumerable<TupleObject<T>> Tuples { get; }
 
         public IQuery<T> Where(IDictionary<string, object> values)
         {

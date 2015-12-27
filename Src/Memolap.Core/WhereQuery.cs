@@ -16,11 +16,14 @@
             this.values = values;
         }
 
-        public override IEnumerable<TupleObject<T>> GetTuples()
+        public override IEnumerable<TupleObject<T>> Tuples
         {
-            foreach (var tuple in this.query.GetTuples())
-                if (tuple.Match(this.values))
-                    yield return tuple;
+            get
+            {
+                foreach (var tuple in this.query.Tuples)
+                    if (tuple.Match(this.values))
+                        yield return tuple;
+            }
         }
     }
 }

@@ -14,9 +14,6 @@
             this.tupleset = tupleset;
         }
 
-        public override IEnumerable<TupleObject<T>> GetTuples()
-        {
-            return this.tupleset.GetTuples();
-        }
+        public override IEnumerable<TupleObject<T>> Tuples { get { return this.tupleset.Tuples; } }
     }
 }

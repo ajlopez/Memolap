@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    public class TupleSet<T>
+    public class TupleSet<T> : ITupleStream<T>
     {
         private string name;
         private IList<Dimension> dimensions = new List<Dimension>();
@@ -123,9 +123,9 @@
             return this.tuples.Count;
         }
 
-        public Query<T> Query()
+        public IQuery<T> Query()
         {
-            return new Query<T>(this);
+            return new BaseQuery<T>(this);
         }
     }
 }

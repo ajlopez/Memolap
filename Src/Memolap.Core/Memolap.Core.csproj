@@ -67,9 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseQuery.cs" />
+    <Compile Include="ITupleStream.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="WhereQuery.cs" />
-    <Compile Include="Query.cs" />
     <Compile Include="TupleSet.cs" />
     <Compile Include="Dimension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

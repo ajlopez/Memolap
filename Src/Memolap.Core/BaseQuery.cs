@@ -5,11 +5,26 @@
     using System.Linq;
     using System.Text;
 
-    public abstract class BaseQuery<T> : IQuery<T>
+    public class BaseQuery<T> : IQuery<T>
     {
-        public abstract IEnumerable<TupleObject<T>> Tuples { get; }
+        private IList<Dimension> dimensions;
+        private IEnumerable<TupleObject<T>> tuples;
 
-        public IQuery<T> Where(IDictionary<string, object> values)
+        public BaseQuery(IList<Dimension> dimensions, IEnumerable<TupleObject<T>> tuples) {
+            this.dimensions = dimensions;
+            this.tuples = tuples;
+        }
+
+        public BaseQuery(ITupleStream<T> stream)
+            : this(stream.Dimensions, stream.Tuples)
+        {
+        }
+
+        public IList<Dimension> Dimensions { get { return this.dimensions; } }
+
+        public virtual IEnumerable<TupleObject<T>> Tuples { get { return this.tuples; } }
+
+        public virtual IQuery<T> Where(IDictionary<string, object> values)
         {
             return new WhereQuery<T>(this, values);
         }

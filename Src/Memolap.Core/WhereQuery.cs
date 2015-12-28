@@ -7,12 +7,11 @@
 
     public class WhereQuery<T> : BaseQuery<T>, IQuery<T>
     {
-        private IQuery<T> query;
         private IDictionary<string, object> values;
 
-        public WhereQuery(IQuery<T> query, IDictionary<string, object> values)
+        public WhereQuery(ITupleStream<T> stream, IDictionary<string, object> values)
+            : base(stream)
         {
-            this.query = query;
             this.values = values;
         }
 
@@ -20,7 +19,7 @@
         {
             get
             {
-                foreach (var tuple in this.query.Tuples)
+                foreach (var tuple in base.Tuples)
                     if (tuple.Match(this.values))
                         yield return tuple;
             }

@@ -10,7 +10,8 @@
         private IList<Dimension> dimensions;
         private IEnumerable<TupleObject<T>> tuples;
 
-        public BaseQuery(IList<Dimension> dimensions, IEnumerable<TupleObject<T>> tuples) {
+        public BaseQuery(IList<Dimension> dimensions, IEnumerable<TupleObject<T>> tuples) 
+        {
             this.dimensions = dimensions;
             this.tuples = tuples;
         }
@@ -27,6 +28,12 @@
         public virtual IQuery<T> Where(IDictionary<string, object> values)
         {
             return new WhereQuery<T>(this, values);
+        }
+
+        public virtual IQuery<T> Skip(int n)
+        {
+            this.tuples = this.tuples.Skip(n);
+            return this;
         }
     }
 }

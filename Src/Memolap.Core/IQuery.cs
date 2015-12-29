@@ -6,5 +6,7 @@
     public interface IQuery<T> : ITupleStream<T>
     {
         IQuery<T> Where(IDictionary<string, object> values);
+
+        IQuery<T> Skip(int n);
     }
 }

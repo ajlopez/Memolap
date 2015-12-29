@@ -195,7 +195,7 @@
         }
 
         [TestMethod]
-        public void WhereQuery()
+        public void QueryWithWhere()
         {
             TupleSet<int> sales = new TupleSet<int>("Sales");
 
@@ -206,6 +206,19 @@
             Assert.IsNotNull(query);
             Assert.AreEqual(20, query.Tuples.Count());
             Assert.IsTrue(query.Tuples.All(t => t.HasValue("Dimension1", "Value 1")));
+        }
+
+        [TestMethod]
+        public void QueryWithSkip()
+        {
+            TupleSet<int> sales = new TupleSet<int>("Sales");
+
+            GenerateTuples(sales, 3, 4, 5);
+
+            var query = sales.Query().Skip(10);
+
+            Assert.IsNotNull(query);
+            Assert.AreEqual(50, query.Tuples.Count());
         }
 
         private static void GenerateTuples(TupleSet<int> set, params int[] nvalues)

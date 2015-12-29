@@ -18,15 +18,18 @@
     <milliseconds>174</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="BaseQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+  <sourcecode name="Query.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
       <milliseconds>53</milliseconds>
     </settings>
-    <timestamp>12/27/2015 06:17:18</timestamp>
-    <milliseconds>504</milliseconds>
+    <timestamp>12/27/2015 06:17:54</timestamp>
+    <milliseconds>768</milliseconds>
     <violations />
   </sourcecode>
+  <project key="-1615803179">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="Dimension.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
@@ -36,22 +39,31 @@
     <milliseconds>826</milliseconds>
     <violations />
   </sourcecode>
+  <sourcecode name="BaseQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>12/29/2015 06:14:18</timestamp>
+    <milliseconds>875</milliseconds>
+    <violations />
+  </sourcecode>
   <sourcecode name="IQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
       <milliseconds>53</milliseconds>
     </settings>
-    <timestamp>12/27/2015 06:14:47</timestamp>
-    <milliseconds>49</milliseconds>
+    <timestamp>12/28/2015 06:05:20</timestamp>
+    <milliseconds>200</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="Query.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+  <sourcecode name="ITupleStream.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
       <milliseconds>53</milliseconds>
     </settings>
-    <timestamp>12/27/2015 06:17:54</timestamp>
-    <milliseconds>768</milliseconds>
+    <timestamp>12/28/2015 06:04:33</timestamp>
+    <milliseconds>263</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
@@ -63,27 +75,6 @@
     <milliseconds>99</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="TupleSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>07/19/2014 17:19:09</timestamp>
-      <milliseconds>53</milliseconds>
-    </settings>
-    <timestamp>12/27/2015 06:14:05</timestamp>
-    <milliseconds>625</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="WhereQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>07/19/2014 17:19:09</timestamp>
-      <milliseconds>53</milliseconds>
-    </settings>
-    <timestamp>12/27/2015 06:18:05</timestamp>
-    <milliseconds>314</milliseconds>
-    <violations />
-  </sourcecode>
-  <project key="-1615803179">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="TupleObject.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
@@ -91,6 +82,24 @@
     </settings>
     <timestamp>12/27/2015 06:20:46</timestamp>
     <milliseconds>353</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="WhereQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>12/28/2015 06:14:34</timestamp>
+    <milliseconds>815</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TupleSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>12/28/2015 06:11:33</timestamp>
+    <milliseconds>370</milliseconds>
     <violations />
   </sourcecode>
 </stylecopresultscache>

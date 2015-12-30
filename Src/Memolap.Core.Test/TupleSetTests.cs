@@ -222,7 +222,7 @@
         }
 
         [TestMethod]
-        public void QueryWithSkip()
+        public void QueryWithTake()
         {
             TupleSet<int> sales = new TupleSet<int>("Sales");
 

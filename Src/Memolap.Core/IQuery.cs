@@ -8,5 +8,7 @@
         IQuery<T> Where(IDictionary<string, object> values);
 
         IQuery<T> Skip(int n);
+
+        IQuery<T> Take(int n);
     }
 }

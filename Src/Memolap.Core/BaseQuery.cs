@@ -35,5 +35,11 @@
             this.tuples = this.tuples.Skip(n);
             return this;
         }
+
+        public virtual IQuery<T> Take(int n)
+        {
+            this.tuples = this.tuples.Take(n);
+            return this;
+        }
     }
 }

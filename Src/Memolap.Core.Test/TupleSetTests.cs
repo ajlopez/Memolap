@@ -221,6 +221,19 @@
             Assert.AreEqual(50, query.Tuples.Count());
         }
 
+        [TestMethod]
+        public void QueryWithSkip()
+        {
+            TupleSet<int> sales = new TupleSet<int>("Sales");
+
+            GenerateTuples(sales, 3, 4, 5);
+
+            var query = sales.Query().Skip(10).Take(20);
+
+            Assert.IsNotNull(query);
+            Assert.AreEqual(20, query.Tuples.Count());
+        }
+
         private static void GenerateTuples(TupleSet<int> set, params int[] nvalues)
         {
             int k;

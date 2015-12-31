@@ -118,11 +118,6 @@
             return vals;
         }
 
-        public int GetTupleCount()
-        {
-            return this.tuples.Count;
-        }
-
         public IQuery<T> Query()
         {
             return new BaseQuery<T>(this);

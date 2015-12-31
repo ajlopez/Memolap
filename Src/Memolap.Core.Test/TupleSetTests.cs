@@ -130,7 +130,7 @@
                 },
                 200);
 
-            Assert.AreEqual(2, sales.GetTupleCount());
+            Assert.AreEqual(2, sales.Tuples.Count());
         }
 
         [TestMethod]
@@ -140,7 +140,7 @@
             
             GenerateTuples(sales, 3, 2);
 
-            Assert.AreEqual(6, sales.GetTupleCount());
+            Assert.AreEqual(6, sales.Tuples.Count());
         }
 
         [TestMethod]
@@ -150,7 +150,7 @@
 
             GenerateTuples(sales, 3, 4, 5);
 
-            Assert.AreEqual(60, sales.GetTupleCount());
+            Assert.AreEqual(60, sales.Tuples.Count());
             Assert.AreEqual(20, sales.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
         }
 
@@ -161,7 +161,7 @@
 
             GenerateTuples(sales, 3, 40, 50);
 
-            Assert.AreEqual(6000, sales.GetTupleCount());
+            Assert.AreEqual(6000, sales.Tuples.Count());
             Assert.AreEqual(2000, sales.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
         }
 

@@ -9,12 +9,12 @@
     [TestClass]
     public class TupleObjectTests
     {
-        private TupleSet<int> set;
+        private DataSet<int> set;
 
         [TestInitialize]
         public void Setup()
         {
-            this.set = new TupleSet<int>("Test");
+            this.set = new DataSet<int>("Test");
             this.set.CreateDimension("Country");
             this.set.CreateDimension("Category");
             this.set.CreateDimension("Product");

@@ -27,6 +27,12 @@
             this.position = 0;
         }
 
+        public int Size { get { return this.size; } }
+
+        public int Position { get { return this.position; } }
+
+        public int NDimensions { get { return this.ndimensions; } }
+
         public void Add(ushort[] values, T data) 
         {
             int offset = this.position * this.ndimensions;

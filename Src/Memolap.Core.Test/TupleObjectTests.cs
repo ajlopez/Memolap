@@ -76,30 +76,6 @@
         }
 
         [TestMethod]
-        public void CloneTuple()
-        {
-            var tuple = this.set.CreateTuple(
-                new Dictionary<string, object>()
-                {
-                    { "Country", "Argentina" },
-                    { "Category", "Beverages" },
-                    { "Product", "Beer" }
-                },
-                100);
-
-            var newtuple = new TupleObject<int>(tuple);
-            Assert.IsTrue(newtuple.HasValue("Country", "Argentina"));
-            Assert.IsTrue(newtuple.HasValue("Category", "Beverages"));
-            Assert.IsTrue(newtuple.HasValue("Product", "Beer"));
-            newtuple.SetValue("Country", "Uruguay");
-            Assert.IsFalse(newtuple.HasValue("Country", "Argentina"));
-            Assert.IsTrue(tuple.HasValue("Country", "Argentina"));
-            Assert.IsTrue(newtuple.HasValue("Country", "Uruguay"));
-            Assert.IsTrue(newtuple.HasValue("Category", "Beverages"));
-            Assert.IsTrue(newtuple.HasValue("Product", "Beer"));
-        }
-
-        [TestMethod]
         public void Match()
         {
             var tuple = this.set.CreateTuple(

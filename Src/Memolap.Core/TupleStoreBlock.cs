@@ -26,5 +26,17 @@
             this.data = new T[size];
             this.position = 0;
         }
+
+        public void Add(ushort[] values, T data) 
+        {
+            int offset = this.position * this.ndimensions;
+
+            for (int k = 0; k < ndimensions; k++)
+                this.values[offset + k] = values[k];
+
+            this.data[this.position] = data;
+
+            this.position++;
+        }
     }
 }

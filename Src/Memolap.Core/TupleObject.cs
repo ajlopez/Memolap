@@ -9,24 +9,29 @@
     {
         private IList<Dimension> dimensions;
         private ushort[] values;
+        private short offset;
+        private T data;
 
         public TupleObject(IList<Dimension> dimensions)
         {
             this.dimensions = dimensions;
             this.values = new ushort[dimensions.Count];
-            this.Data = default(T);
+            this.offset = 0;
+            this.data = default(T);
         }
 
         public TupleObject(IList<Dimension> dimensions, ushort[] values, T data)
         {
             this.dimensions = dimensions;
             this.values = values;
-            this.Data = data;
+            this.offset = 0;
+            this.data = data;
         }
 
-        public TupleObject(IDictionary<string, object> values)
+        public TupleObject(IDictionary<string, object> values, T data)
         {
             this.values = new ushort[this.dimensions.Count];
+            this.offset = 0;
 
             foreach (var val in values)
             {
@@ -35,18 +40,10 @@
                 this.values[position] = dimension.GetValue(val.Value);
             }
 
-            this.Data = default(T);
+            this.data = data;
         }
 
-        public TupleObject(TupleObject<T> tuple)
-        {
-            this.Data = tuple.Data;
-            this.values = new ushort[tuple.values.Length];
-            Array.Copy(tuple.values, this.values, this.values.Length);
-            this.dimensions = tuple.dimensions;
-        }
-
-        public T Data { get; set; }
+        public T Data { get { return this.data; } }
 
         public int Size { get { return this.values.Length; } }
 
@@ -59,7 +56,7 @@
 
             int position = this.dimensions.IndexOf(dimension);
 
-            object val = dimension.GetValue(this.values[position]);
+            object val = dimension.GetValue(this.values[this.offset + position]);
 
             if (value == null)
                 return val == null;
@@ -71,14 +68,14 @@
         {
             Dimension dimension = this.dimensions.First(d => d.Name == dimname);
             int position = this.dimensions.IndexOf(dimension);
-            this.values[position] = dimension.GetValue(value);
+            this.values[position + this.offset] = dimension.GetValue(value);
         }
 
         public object GetValue(string dimname)
         {
             Dimension dimension = this.dimensions.First(d => d.Name == dimname);
             int position = this.dimensions.IndexOf(dimension);
-            var value = this.values[position];
+            var value = this.values[position + this.offset];
 
             return dimension.GetValue(value);
         }
@@ -88,7 +85,7 @@
             object[] vals = new object[this.dimensions.Count];
 
             for (int k = 0; k < vals.Length; k++)
-                vals[k] = this.dimensions[k].GetValue(this.values[k]);
+                vals[k] = this.dimensions[k].GetValue(this.values[k + this.offset]);
 
             return vals;
         }

@@ -69,6 +69,7 @@
     <Compile Include="BaseQuery.cs" />
     <Compile Include="ITupleStream.cs" />
     <Compile Include="IQuery.cs" />
+    <Compile Include="TupleStoreBlock.cs" />
     <Compile Include="WhereQuery.cs" />
     <Compile Include="DataSet.cs" />
     <Compile Include="Dimension.cs" />

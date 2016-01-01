@@ -8,16 +8,16 @@
     public class TupleObject<T>
     {
         private IList<Dimension> dimensions;
-        private short[] values;
+        private ushort[] values;
 
         public TupleObject(IList<Dimension> dimensions)
         {
             this.dimensions = dimensions;
-            this.values = new short[dimensions.Count];
+            this.values = new ushort[dimensions.Count];
             this.Data = default(T);
         }
 
-        public TupleObject(IList<Dimension> dimensions, short[] values, T data)
+        public TupleObject(IList<Dimension> dimensions, ushort[] values, T data)
         {
             this.dimensions = dimensions;
             this.values = values;
@@ -26,7 +26,7 @@
 
         public TupleObject(IDictionary<string, object> values)
         {
-            this.values = new short[this.dimensions.Count];
+            this.values = new ushort[this.dimensions.Count];
 
             foreach (var val in values)
             {
@@ -41,7 +41,7 @@
         public TupleObject(TupleObject<T> tuple)
         {
             this.Data = tuple.Data;
-            this.values = new short[tuple.values.Length];
+            this.values = new ushort[tuple.values.Length];
             Array.Copy(tuple.values, this.values, this.values.Length);
             this.dimensions = tuple.dimensions;
         }

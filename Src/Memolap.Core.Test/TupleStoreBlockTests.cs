@@ -29,6 +29,9 @@
             Assert.AreEqual(1024, block.Size);
             Assert.AreEqual(1, block.Position);
             Assert.AreEqual(6, block.NDimensions);
+
+            for (int k = 0; k < 6; k++)
+                Assert.AreEqual(k + 1, block.Values[k]);
         }
     }
 }

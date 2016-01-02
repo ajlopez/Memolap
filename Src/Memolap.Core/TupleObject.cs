@@ -9,7 +9,7 @@
     {
         private IList<Dimension> dimensions;
         private ushort[] values;
-        private short offset;
+        private int offset;
         private T data;
 
         public TupleObject(IList<Dimension> dimensions)
@@ -21,10 +21,15 @@
         }
 
         public TupleObject(IList<Dimension> dimensions, ushort[] values, T data)
+            : this(dimensions, values, 0, data)
+        {
+        }
+
+        public TupleObject(IList<Dimension> dimensions, ushort[] values, int offset, T data)
         {
             this.dimensions = dimensions;
             this.values = values;
-            this.offset = 0;
+            this.offset = offset;
             this.data = data;
         }
 

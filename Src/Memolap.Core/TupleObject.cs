@@ -116,5 +116,19 @@
 
             return true;
         }
+
+        public bool Match(IDictionary<int, ushort> values)
+        {
+            foreach (var val in values)
+            {
+                int ndim = val.Key;
+                ushort value = val.Value;
+
+                if (this.values[ndim] != value)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

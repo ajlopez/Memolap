@@ -7,12 +7,22 @@
 
     public class WhereQuery<T> : BaseQuery<T>, IQuery<T>
     {
-        private IDictionary<string, object> values;
+        private IDictionary<int, ushort> values = new Dictionary<int, ushort>();
 
         public WhereQuery(ITupleStream<T> stream, IDictionary<string, object> values)
             : base(stream)
-        {
-            this.values = values;
+        { 
+            foreach (var val in values)
+            {
+                var dimname = val.Key;
+                var value = val.Value;
+
+                var dimension = stream.Dimensions.First(d => d.Name == dimname);
+                var dimindex = stream.Dimensions.IndexOf(dimension);
+                var intvalue = dimension.GetValue(value);
+
+                this.values[dimindex] = intvalue;
+            }
         }
 
         public override IEnumerable<TupleObject<T>> Tuples

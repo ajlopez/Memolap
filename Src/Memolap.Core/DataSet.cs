@@ -92,11 +92,6 @@
             return tuple;
         }
 
-        public IEnumerable<TupleObject<T>> GetTuples()
-        {
-            return this.tuples;
-        }
-
         public IEnumerable<TupleObject<T>> GetTuples(IDictionary<string, object> values)
         {
             foreach (var tuple in this.tuples)

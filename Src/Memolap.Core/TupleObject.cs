@@ -33,21 +33,6 @@
             this.data = data;
         }
 
-        public TupleObject(IDictionary<string, object> values, T data)
-        {
-            this.values = new ushort[this.dimensions.Count];
-            this.offset = 0;
-
-            foreach (var val in values)
-            {
-                Dimension dimension = this.dimensions.First(d => d.Name == val.Key);
-                int position = this.dimensions.IndexOf(dimension);
-                this.values[position] = dimension.GetValue(val.Value);
-            }
-
-            this.data = data;
-        }
-
         public T Data { get { return this.data; } }
 
         public int Size { get { return this.values.Length; } }

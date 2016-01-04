@@ -95,28 +95,6 @@
             return vals;
         }
 
-        public bool Match(IDictionary<string, object> values)
-        {
-            foreach (var val in values)
-            {
-                object value = val.Value;
-                string dimname = val.Key;
-
-                Dimension dimension = this.dimensions.FirstOrDefault(d => d.Name == dimname);
-
-                if (dimension == null)
-                    return false;
-
-                if (value == null)
-                    return true;
-
-                if (!this.HasValue(dimname, value))
-                    return false;
-            }
-
-            return true;
-        }
-
         public bool Match(IDictionary<int, ushort> values)
         {
             foreach (var val in values)

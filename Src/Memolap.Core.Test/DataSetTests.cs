@@ -151,7 +151,7 @@
             GenerateTuples(sales, 3, 4, 5);
 
             Assert.AreEqual(60, sales.Tuples.Count());
-            Assert.AreEqual(20, sales.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
+            Assert.AreEqual(20, sales.Query().Where(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Tuples.Count());
         }
 
         [TestMethod]
@@ -161,23 +161,7 @@
             GenerateTuples(sales, 3, 40, 50);
 
             Assert.AreEqual(6000, sales.Tuples.Count());
-            Assert.AreEqual(2000, sales.GetTuples(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Count());
-        }
-
-        [TestMethod]
-        public void GetTuplesValues()
-        {
-            DataSet<int> sales = new DataSet<int>("Sales");
-
-            GenerateTuples(sales, 3, 4, 5, 2);
-
-            var values = sales.GetTuplesValues(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }, "Dimension2");
-            Assert.IsNotNull(values);
-            Assert.AreEqual(4, values.Count);
-            Assert.IsTrue(values.Any(val => val.Equals("Value 1")));
-            Assert.IsTrue(values.Any(val => val.Equals("Value 2")));
-            Assert.IsTrue(values.Any(val => val.Equals("Value 3")));
-            Assert.IsTrue(values.Any(val => val.Equals("Value 4")));
+            Assert.AreEqual(2000, sales.Query().Where(new Dictionary<string, object>() { { "Dimension1", "Value 1" } }).Tuples.Count());
         }
 
         [TestMethod]

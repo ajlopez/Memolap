@@ -92,27 +92,6 @@
             return tuple;
         }
 
-        public IEnumerable<TupleObject<T>> GetTuples(IDictionary<string, object> values)
-        {
-            foreach (var tuple in this.tuples)
-                if (tuple.Match(values))
-                    yield return tuple;
-        }
-
-        public ICollection<object> GetTuplesValues(IDictionary<string, object> values, string dimension)
-        {
-            IList<object> vals = new List<object>();
-
-            foreach (var tuple in this.GetTuples(values))
-            {
-                object value = tuple.GetValue(dimension);
-                if (value != null && !vals.Contains(value))
-                    vals.Add(value);
-            }
-
-            return vals;
-        }
-
         public IQuery<T> Query()
         {
             return new BaseQuery<T>(this);

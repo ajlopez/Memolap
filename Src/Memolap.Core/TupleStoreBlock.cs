@@ -39,7 +39,7 @@
         {
             int offset = this.position * this.ndimensions;
 
-            for (int k = 0; k < ndimensions; k++)
+            for (int k = 0; k < this.ndimensions; k++)
                 this.values[offset + k] = values[k];
 
             this.data[this.position] = data;

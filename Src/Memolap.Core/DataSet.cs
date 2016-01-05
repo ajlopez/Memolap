@@ -46,14 +46,7 @@
             return -1;
         }
 
-        public TupleObject<T> CreateTuple()
-        {
-            TupleObject<T> tuple = new TupleObject<T>(this.dimensions);
-            this.tuples.Add(tuple);
-            return tuple;
-        }
-
-        public TupleObject<T> CreateTuple(IDictionary<string, object> values, T data)
+        public TupleObject<T> AddData(IDictionary<string, object> values, T data)
         {
             int[] positions = new int[values.Count];
             IList<string> keys = values.Keys.ToList();

@@ -23,7 +23,7 @@
         [TestMethod]
         public void HasValue()
         {
-            var tuple = this.set.CreateTuple(
+            var tuple = this.set.AddData(
                 new Dictionary<string, object>()
                 {
                     { "Country", "Argentina" },
@@ -37,42 +37,6 @@
             Assert.IsTrue(tuple.HasValue("Product", "Beer"));
 
             Assert.IsFalse(tuple.HasValue("Province", "Buenos Aires"));
-        }
-
-        [TestMethod]
-        public void SetValue()
-        {
-            var tuple = this.set.CreateTuple();
-            tuple.SetValue("Country", "Argentina");
-            Assert.IsTrue(tuple.HasValue("Country", "Argentina"));
-            tuple.SetValue("Country", "Uruguay");
-            Assert.IsTrue(tuple.HasValue("Country", "Uruguay"));
-            Assert.IsFalse(tuple.HasValue("Country", "Argentina"));
-        }
-
-        [TestMethod]
-        public void GetValues()
-        {
-            var tuple = this.set.CreateTuple();
-            tuple.SetValue("Country", "Argentina");
-            tuple.SetValue("Category", "Beverages");
-
-            var values = tuple.GetValues().ToList();
-
-            Assert.IsNotNull(values);
-            Assert.AreEqual(3, values.Count);
-            Assert.AreEqual("Argentina", values[0]);
-            Assert.AreEqual("Beverages", values[1]);
-            Assert.IsNull(values[2]);
-        }
-
-        [TestMethod]
-        public void GetValueOnEmptyDimension()
-        {
-            var tuple = this.set.CreateTuple();
-            Assert.IsNull(tuple.GetValue("Country"));
-
-            tuple.GetValues().All(v => v == null);
         }
     }
 }

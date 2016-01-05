@@ -92,7 +92,7 @@
         {
             DataSet<int> sales = new DataSet<int>("Sales");
 
-            TupleObject<int> tuple = sales.CreateTuple(
+            TupleObject<int> tuple = sales.AddData(
                 new Dictionary<string, object>
                 {
                     { "Country", "Canada" },
@@ -112,7 +112,7 @@
         {
             DataSet<int> sales = new DataSet<int>("Sales");
 
-            sales.CreateTuple(
+            sales.AddData(
                 new Dictionary<string, object>()
                 {
                     { "Country", "Argentina" },
@@ -121,7 +121,7 @@
                 },
                 100);
 
-            sales.CreateTuple(
+            sales.AddData(
                 new Dictionary<string, object>()
                 {
                     { "Country", "Argentina" },
@@ -237,7 +237,7 @@
         {
             if (position >= dimensions.Count)
             {
-                set.CreateTuple(values, 1);
+                set.AddData(values, 1);
                 return;
             }
 

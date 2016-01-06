@@ -80,6 +80,11 @@
             return vals;
         }
 
+        public TupleObject<T> Clone()
+        {
+            return new TupleObject<T>(this.dimensions, this.values, this.offset, this.data);
+        }
+
         public bool Match(IDictionary<int, ushort> values)
         {
             foreach (var val in values)

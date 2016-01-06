@@ -38,5 +38,26 @@
 
             Assert.IsFalse(tuple.HasValue("Province", "Buenos Aires"));
         }
+
+        [TestMethod]
+        public void Clone()
+        {
+            var tuple = this.set.AddData(
+                new Dictionary<string, object>()
+                {
+                    { "Country", "Argentina" },
+                    { "Category", "Beverages" },
+                    { "Product", "Beer" }
+                },
+                100);
+
+            var clone = tuple.Clone();
+
+            Assert.IsTrue(clone.HasValue("Country", "Argentina"));
+            Assert.IsTrue(clone.HasValue("Category", "Beverages"));
+            Assert.IsTrue(clone.HasValue("Product", "Beer"));
+
+            Assert.IsFalse(clone.HasValue("Province", "Buenos Aires"));
+        }
     }
 }

@@ -70,16 +70,6 @@
             return dimension.GetValue(value);
         }
 
-        public IEnumerable<object> GetValues()
-        {
-            object[] vals = new object[this.dimensions.Count];
-
-            for (int k = 0; k < vals.Length; k++)
-                vals[k] = this.dimensions[k].GetValue(this.values[k + this.offset]);
-
-            return vals;
-        }
-
         public TupleObject<T> Clone()
         {
             return new TupleObject<T>(this.dimensions, this.values, this.offset, this.data);

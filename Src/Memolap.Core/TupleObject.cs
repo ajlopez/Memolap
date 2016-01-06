@@ -35,8 +35,6 @@
 
         public T Data { get { return this.data; } }
 
-        public int Size { get { return this.values.Length; } }
-
         public bool HasValue(string dimname, object value)
         {
             Dimension dimension = this.dimensions.FirstOrDefault(d => d.Name == dimname);

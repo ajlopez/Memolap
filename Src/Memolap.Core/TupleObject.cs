@@ -54,13 +54,6 @@
             return value.Equals(val);
         }
 
-        public void SetValue(string dimname, object value)
-        {
-            Dimension dimension = this.dimensions.First(d => d.Name == dimname);
-            int position = this.dimensions.IndexOf(dimension);
-            this.values[position + this.offset] = dimension.GetValue(value);
-        }
-
         public object GetValue(string dimname)
         {
             Dimension dimension = this.dimensions.First(d => d.Name == dimname);

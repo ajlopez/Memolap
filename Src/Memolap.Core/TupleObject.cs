@@ -66,6 +66,13 @@
             return new TupleObject<T>(this.dimensions, this.values, this.offset, this.data);
         }
 
+        public void Adjust(ushort[] values, int offset, T data)
+        {
+            this.values = values;
+            this.offset = offset;
+            this.data = data;
+        }
+
         public bool Match(IDictionary<int, ushort> values)
         {
             foreach (var val in values)
@@ -73,7 +80,7 @@
                 int ndim = val.Key;
                 ushort value = val.Value;
 
-                if (this.values[ndim] != value)
+                if (this.values[ndim + this.offset] != value)
                     return false;
             }
 

@@ -35,6 +35,8 @@
 
         public ushort[] Values { get { return this.values; } }
 
+        public T[] Data { get { return this.data; } }
+
         public void Add(ushort[] values, T data) 
         {
             int offset = this.position * this.ndimensions;

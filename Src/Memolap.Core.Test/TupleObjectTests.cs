@@ -23,7 +23,7 @@
         [TestMethod]
         public void HasValue()
         {
-            var tuple = this.set.AddData(
+            this.set.AddData(
                 new Dictionary<string, object>()
                 {
                     { "Country", "Argentina" },
@@ -31,6 +31,8 @@
                     { "Product", "Beer" }
                 },
                 100);
+
+            var tuple = this.set.Tuples.First();
 
             Assert.IsTrue(tuple.HasValue("Country", "Argentina"));
             Assert.IsTrue(tuple.HasValue("Category", "Beverages"));
@@ -42,7 +44,7 @@
         [TestMethod]
         public void Clone()
         {
-            var tuple = this.set.AddData(
+            this.set.AddData(
                 new Dictionary<string, object>()
                 {
                     { "Country", "Argentina" },
@@ -51,6 +53,7 @@
                 },
                 100);
 
+            var tuple = this.set.Tuples.First();
             var clone = tuple.Clone();
 
             Assert.IsTrue(clone.HasValue("Country", "Argentina"));

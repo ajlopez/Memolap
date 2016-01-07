@@ -91,14 +91,16 @@
         public void CreateTuple()
         {
             DataSet<int> sales = new DataSet<int>("Sales");
-
-            TupleObject<int> tuple = sales.AddData(
+            sales.AddData(
                 new Dictionary<string, object>
                 {
                     { "Country", "Canada" },
                     { "Year", 2012 }
-                }, 
+                },
                 100);
+
+
+            TupleObject<int> tuple = sales.Tuples.First();
 
             Assert.IsNotNull(tuple);
             Assert.AreEqual(2, sales.Dimensions.Count);

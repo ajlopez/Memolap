@@ -10,7 +10,8 @@
         private string name;
         private IList<Dimension> dimensions = new List<Dimension>();
         private IList<TupleObject<T>> tuples = new List<TupleObject<T>>();
-        private TupleStoreBlock<T> block;
+        private IList<TupleStoreBlock<T>> blocks = new List<TupleStoreBlock<T>>();
+        private int nblock = -1;
 
         public DataSet(string name) 
         {
@@ -24,14 +25,20 @@
         public IEnumerable<TupleObject<T>> Tuples { 
             get 
             {
+                int nblocks = this.blocks.Count;
                 int ndimensions = this.dimensions.Count;
                 TupleObject<T> tuple = new TupleObject<T>(this.dimensions);
-                int size = this.block.Position;
 
-                for (int k = 0; k < size; k++)
+                for (int nb = 0; nb < nblocks; nb++)
                 {
-                    tuple.Adjust(this.block.Values, k * ndimensions, this.block.Data[k]);
-                    yield return tuple;
+                    TupleStoreBlock<T> block = this.blocks[nb];
+                    int size = block.Position;
+
+                    for (int k = 0; k < size; k++)
+                    {
+                        tuple.Adjust(block.Values, k * ndimensions, block.Data[k]);
+                        yield return tuple;
+                    }
                 }
             } 
         }
@@ -92,10 +99,13 @@
                 k++;
             }
 
-            if (this.block == null)
-                this.block = new TupleStoreBlock<T>(this.dimensions.Count, 10000);
+            if (this.nblock < 0 || this.blocks[this.nblock].Position >= this.blocks[this.nblock].Size)
+            {
+                this.nblock++;
+                this.blocks.Add(new TupleStoreBlock<T>(this.dimensions.Count, 1024));
+            }
 
-            this.block.Add(vals, data);
+            this.blocks[this.nblock].Add(vals, data);
         }
 
         public IQuery<T> Query()

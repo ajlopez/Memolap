@@ -44,6 +44,21 @@
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void RaiseIfCreateDimensionAfterAddingData()
+        {
+            DataSet<int> set = new DataSet<int>("Data");
+            set.CreateDimension("Country");
+            set.AddData(
+                new Dictionary<string, object>
+                {
+                    { "Country", "Canada" }
+                },
+                100);
+            set.CreateDimension("Category");
+        }
+
+        [TestMethod]
         public void GetUnknownDimensionAsNull()
         {
             DataSet<int> set = new DataSet<int>("Data");

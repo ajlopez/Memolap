@@ -49,6 +49,9 @@
             if (this.dimensions.Any(d => d.Name == name))
                 throw new InvalidOperationException("Duplicated dimension");
 
+            if (this.blocks.Count > 0)
+                throw new InvalidOperationException("Dimension can not be created");
+
             Dimension dimension = new Dimension(name);
             this.dimensions.Add(dimension);
             return dimension;

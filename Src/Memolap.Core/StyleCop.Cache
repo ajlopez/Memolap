@@ -36,15 +36,9 @@
     <milliseconds>370</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="DataSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>07/19/2014 17:19:09</timestamp>
-      <milliseconds>53</milliseconds>
-    </settings>
-    <timestamp>01/03/2016 18:44:58</timestamp>
-    <milliseconds>329</milliseconds>
-    <violations />
-  </sourcecode>
+  <project key="-1615803179">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="BaseQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
@@ -54,15 +48,6 @@
     <milliseconds>491</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="IQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>07/19/2014 17:19:09</timestamp>
-      <milliseconds>53</milliseconds>
-    </settings>
-    <timestamp>12/30/2015 05:14:31</timestamp>
-    <milliseconds>804</milliseconds>
-    <violations />
-  </sourcecode>
   <sourcecode name="Dimension.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/19/2014 17:19:09</timestamp>
@@ -70,6 +55,24 @@
     </settings>
     <timestamp>01/01/2016 07:50:34</timestamp>
     <milliseconds>584</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DataSet.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>01/09/2016 06:49:53</timestamp>
+    <milliseconds>622</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>12/30/2015 05:14:31</timestamp>
+    <milliseconds>804</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="ITupleStream.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
@@ -95,8 +98,17 @@
       <timestamp>07/19/2014 17:19:09</timestamp>
       <milliseconds>53</milliseconds>
     </settings>
-    <timestamp>01/03/2016 18:44:58</timestamp>
-    <milliseconds>345</milliseconds>
+    <timestamp>01/07/2016 06:49:42</timestamp>
+    <milliseconds>838</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TupleStoreBlock.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/19/2014 17:19:09</timestamp>
+      <milliseconds>53</milliseconds>
+    </settings>
+    <timestamp>01/07/2016 06:42:47</timestamp>
+    <milliseconds>492</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="WhereQuery.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
@@ -106,18 +118,6 @@
     </settings>
     <timestamp>01/03/2016 18:44:58</timestamp>
     <milliseconds>345</milliseconds>
-    <violations />
-  </sourcecode>
-  <project key="-1615803179">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
-  <sourcecode name="TupleStoreBlock.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>07/19/2014 17:19:09</timestamp>
-      <milliseconds>53</milliseconds>
-    </settings>
-    <timestamp>01/04/2016 06:42:52</timestamp>
-    <milliseconds>837</milliseconds>
     <violations />
   </sourcecode>
 </stylecopresultscache>

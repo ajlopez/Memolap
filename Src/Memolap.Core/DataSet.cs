@@ -22,7 +22,8 @@
 
         public IList<Dimension> Dimensions { get { return this.dimensions; } }
 
-        public IEnumerable<TupleObject<T>> Tuples { 
+        public IEnumerable<TupleObject<T>> Tuples 
+        { 
             get 
             {
                 int nblocks = this.blocks.Count;

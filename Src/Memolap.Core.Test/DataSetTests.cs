@@ -99,7 +99,6 @@
                 },
                 100);
 
-
             TupleObject<int> tuple = sales.Tuples.First();
 
             Assert.IsNotNull(tuple);

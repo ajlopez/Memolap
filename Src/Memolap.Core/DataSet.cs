@@ -62,15 +62,6 @@
             return this.dimensions.FirstOrDefault(d => d.Name == name);
         }
 
-        public int GetDimensionOffset(string name)
-        {
-            for (int k = 0; k < this.dimensions.Count; k++)
-                if (this.dimensions[k].Name == name)
-                    return k;
-
-            return -1;
-        }
-
         public void AddData(IDictionary<string, object> values, T data)
         {
             int[] positions = new int[values.Count];
@@ -115,6 +106,15 @@
         public IQuery<T> Query()
         {
             return new BaseQuery<T>(this);
+        }
+
+        private int GetDimensionOffset(string name)
+        {
+            for (int k = 0; k < this.dimensions.Count; k++)
+                if (this.dimensions[k].Name == name)
+                    return k;
+
+            return -1;
         }
     }
 }

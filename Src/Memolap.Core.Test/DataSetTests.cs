@@ -17,7 +17,7 @@
             Assert.AreEqual("Test", set.Name);
             Assert.IsNotNull(set.Dimensions);
             Assert.AreEqual(0, set.Dimensions.Count);
-            Assert.AreEqual(-1, set.GetDimensionOffset("Unknown"));
+            Assert.IsNull(set.GetDimension("Unknown"));
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@
             Assert.AreEqual("Country", result.Name);
             Assert.AreEqual("Countries", result.SetName);
             Assert.AreEqual(1, set.Dimensions.Count);
-            Assert.AreEqual(0, set.GetDimensionOffset("Country"));
+            Assert.AreSame(result, set.GetDimension("Country"));
         }
 
         [TestMethod]

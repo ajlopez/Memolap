@@ -39,15 +39,6 @@
     <milliseconds>333</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="DataSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>01/05/2013 15:37:51</timestamp>
-      <milliseconds>896</milliseconds>
-    </settings>
-    <timestamp>01/09/2016 06:50:00</timestamp>
-    <milliseconds>824</milliseconds>
-    <violations />
-  </sourcecode>
   <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>01/05/2013 15:37:51</timestamp>
@@ -64,6 +55,15 @@
     </settings>
     <timestamp>01/07/2016 06:44:11</timestamp>
     <milliseconds>394</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DataSetTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/05/2013 15:37:51</timestamp>
+      <milliseconds>896</milliseconds>
+    </settings>
+    <timestamp>01/10/2016 07:55:37</timestamp>
+    <milliseconds>898</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="TupleStoreBlockTests.cs" parser="Microsoft.StyleCop.CSharp.CsParser">

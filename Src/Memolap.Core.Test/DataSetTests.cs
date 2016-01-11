@@ -29,7 +29,6 @@
 
             Assert.IsNotNull(result);
             Assert.AreEqual("Country", result.Name);
-            Assert.AreEqual("Countries", result.SetName);
             Assert.AreEqual(1, set.Dimensions.Count);
             Assert.AreSame(result, set.GetDimension("Country"));
         }
@@ -95,11 +94,8 @@
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result.Count);
             Assert.IsTrue(result.Any(c => c.Name == "Country"));
-            Assert.IsTrue(result.Any(c => c.SetName == "Countries"));
             Assert.IsTrue(result.Any(c => c.Name == "Product"));
-            Assert.IsTrue(result.Any(c => c.SetName == "Products"));
             Assert.IsTrue(result.Any(c => c.Name == "Category"));
-            Assert.IsTrue(result.Any(c => c.SetName == "Categories"));
         }
 
         [TestMethod]
